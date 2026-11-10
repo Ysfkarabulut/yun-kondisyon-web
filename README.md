@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yün Kondisyon ve Yün Oranı Test Laboratuvarı Web Paneli
 
-## Getting Started
+Bu proje, Android uygulamasındaki hesaplama motorunu, veri yapılarını ve raporlama özelliklerini birebir koruyarak **Vercel** üzerinde tek tıkla canlıya alınabilecek ve **mobil cihazlarda (iOS & Android)** uygulama deneyimi sunacak şekilde Next.js + Tailwind CSS + TypeScript ile geliştirilmiştir.
 
-First, run the development server:
+---
 
+## 🚀 Vercel ile Canlıya Alma (2 Dakika)
+
+### Seçenek 1: GitHub & Vercel Dashboard (Önerilen)
+1. GitHub üzerinde yeni bir repo oluşturun (örn: `yun-kondisyon-web`).
+2. Terminalde `web` klasörü içindeyken reponuzu bağlayıp gönderin:
+   ```bash
+   cd C:\Users\ASUS\Desktop\Projeler\YunKondisyonTesti\web
+   git remote add origin https://github.com/KULLANICI_ADINIZ/yun-kondisyon-web.git
+   git branch -M main
+   git push -u origin main
+   ```
+3. [Vercel Dashboard](https://vercel.com)'a girin, **"Add New Project"** butonuna tıklayın ve GitHub reponuzu seçip **"Deploy"** butonuna basın.
+4. Vercel size anında `https://yun-kondisyon-web.vercel.app` şeklinde canlı bir web bağlantısı verecektir.
+
+### Seçenek 2: Vercel CLI ile Doğrudan Terminalden
+1. `npm i -g vercel` (eğer yüklü değilse)
+2. `web` klasöründeyken terminalde `vercel` yazıp Enter'a basarak yönergeleri onaylayın.
+
+---
+
+## 📱 Mobilde Uygulama Olarak Kullanma (PWA)
+Canlıya aldığınız bağlantıyı telefonunuzun tarayıcısında açtığınızda:
+- **iPhone (Safari):** Paylaş butonuna dokunun > **"Ana Ekrana Ekle"** seçeneğini seçin.
+- **Android (Chrome):** Sağ üstteki üç noktaya dokunun > **"Uygulamayı Yükle / Ana Ekrana Ekle"** seçeneğini seçin.
+Uygulama telefonunuzun ana ekranına bir ikon olarak yerleşir ve tam ekran (tarayıcı çubuğu olmadan) bir yerel mobil uygulama gibi çalışır.
+
+---
+
+## 🧪 Fonksiyonlar ve Hesaplama Formülleri
+
+### 1. Yün Kondisyon Testi
+- **Nem İçeriği (Moisture Content %):** `(Numune Nemli - Numune Kuru) / Numune Nemli × 100`
+- **Regain (Kuru Bazlı %):** `(Numune Nemli - Numune Kuru) / Numune Kuru × 100`
+- **Toplam Kuru Ağırlık (Total Dry Weight kg):** `Net KG (Nemli) × (Numune Kuru / Numune Nemli)`
+- **Parti Ticari Ağırlığı (Invoice Weight kg):** `Toplam Kuru Ağırlık × (1 + Standart Nem / 100)`
+- **Standart Regain (kg ve %):** Standart nem oranına (ör. %17) göre gelen toplam içindeki regain miktarı.
+- **Gain (Kazanım / Fark kg ve %):** `Parti Ticari Ağırlığı - Net KG`
+- **Çeki Listesi Karşılaştırması:** Çeki listesindeki Kondisyon KG ve Kondisyon Oranı ile otomatik karşılaştırma.
+- **Kurutma Notları:** Fırındaki numunenin peş peşe tartımlarını dara (TARE) düşerek kaydetme ve arşive kaldırma.
+- **PDF Raporu:** Tüm formül açıklamaları ve değerleri içeren resmi A4 test raporu oluşturma ve doğrudan mobil paylaşım (WhatsApp, Mail vb.).
+
+### 2. Yün Oranı Testi
+- **1. Numune (Kostik Çözeltisi):** Yün tamamen çözünür, geriye yalnızca **Diğer** (viskon vb.) kalır.
+- **2. Numune (Yıkama ve Kurutma):** Geriye **Yün + Diğer** kalır.
+- **Diğer Oranı (%):** `Numune 1 Son Tartım / Numune 2 Son Tartım × 100`
+- **Yün Oranı (%):** `100 − Diğer Oranı (%)`
+- **Dahili Kurutma Kronometresi:** Mobil ekran kapansa dahi arka planda gerçek zamanlı sayan ileri kronometre.
+- **Çoklu Test Seçimi & Tek Sayfa PDF:** Geçmişten istediğiniz testleri seçip aralarında ince ayırıcı çizgilerle tek bir sayfada toplu PDF çıktısı alma ve silme.
+
+### 3. Notlar ve Veri Güvenliği
+- **Test Bekleyen Lotlar:** Hızlı karalama ve lot listesi not defteri (otomatik kayıt).
+- **Yedekleme & Geri Yükleme:** Tüm verilerinizi tek tıkla JSON dosyası olarak indirme ve başka cihaza aktarma.
+- **Çevrimdışı (Offline) Desteği:** Veriler cihazınızın yerel hafızasında (LocalStorage) güvenle saklanır, internet olmasa bile çalışır.
+
+---
+
+## 💻 Yerel Geliştirme (Localhost)
+Bilgisayarınızda test etmek için:
 ```bash
+cd C:\Users\ASUS\Desktop\Projeler\YunKondisyonTesti\web
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Tarayıcınızda `http://localhost:3000` adresine gidin.
