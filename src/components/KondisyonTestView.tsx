@@ -85,6 +85,27 @@ export default function KondisyonTestView({ onNotify }: KondisyonTestViewProps) 
     });
   }, [notesLot, tare, measurements]);
 
+  // Auto-calculate Condition Percent from Condition KG & Net KG Nemli
+  const handleIncomingChange = (val: string) => {
+    setIncoming(val);
+    const incVal = ParseUtils.parseDouble(val);
+    const condVal = ParseUtils.parseDouble(conditionKg);
+    if (incVal !== null && incVal > 0 && condVal !== null) {
+      const pct = ((condVal - incVal) / incVal) * 100;
+      setConditionPercent(pct.toFixed(2));
+    }
+  };
+
+  const handleConditionKgChange = (val: string) => {
+    setConditionKg(val);
+    const condVal = ParseUtils.parseDouble(val);
+    const incVal = ParseUtils.parseDouble(incoming);
+    if (condVal !== null && incVal !== null && incVal > 0) {
+      const pct = ((condVal - incVal) / incVal) * 100;
+      setConditionPercent(pct.toFixed(2));
+    }
+  };
+
   // Live Calculations
   const calculatedMetrics = useMemo(() => {
     const wetVal = ParseUtils.parseDouble(wet);
@@ -262,7 +283,7 @@ export default function KondisyonTestView({ onNotify }: KondisyonTestViewProps) 
               type="text"
               inputMode="decimal"
               value={incoming}
-              onChange={e => setIncoming(e.target.value)}
+              onChange={e => handleIncomingChange(e.target.value)}
               placeholder="Örn: 5000"
               className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
@@ -337,23 +358,28 @@ export default function KondisyonTestView({ onNotify }: KondisyonTestViewProps) 
               type="text"
               inputMode="decimal"
               value={conditionKg}
-              onChange={e => setConditionKg(e.target.value)}
-              placeholder="Opsiyonel"
+              onChange={e => handleConditionKgChange(e.target.value)}
+              placeholder="Örn: 5265"
               className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
           {/* Kondisyon Oranı (Çeki Listesi) */}
           <div className="sm:col-span-2">
-            <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">
-              Kondisyon Oranı % (Çeki Listesi)
-            </label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-300">
+                Kondisyon Oranı % (Çeki Listesi)
+              </label>
+              <span className="text-[10px] text-slate-400">
+                (Otomatik hesaplanır veya el ile girilebilir)
+              </span>
+            </div>
             <input
               type="text"
               inputMode="decimal"
               value={conditionPercent}
               onChange={e => setConditionPercent(e.target.value)}
-              placeholder="Opsiyonel (Örn: 17)"
+              placeholder="Örn: 5.30"
               className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
@@ -458,6 +484,7 @@ export default function KondisyonTestView({ onNotify }: KondisyonTestViewProps) 
               <p>• <strong>Total Dry Weight:</strong> Net KG × (Numune Kuru / Numune Nemli)</p>
               <p>• <strong>Invoice Weight (Ticari):</strong> Total Dry Weight × (1 + Standart Nem / 100)</p>
               <p>• <strong>Gain:</strong> Invoice Weight - Net KG</p>
+              <p>• <strong>Kondisyon Oranı (Çeki):</strong> ((Kondisyon KG - Net KG) / Net KG) × 100</p>
             </div>
           )}
         </div>
