@@ -11,7 +11,10 @@ import {
   Trash2,
   CheckCircle,
   HelpCircle,
+  Cloud,
+  RefreshCw,
 } from 'lucide-react';
+import { SyncService } from '@/lib/syncService';
 
 interface NotesAndSettingsViewProps {
   onNotify: (msg: string) => void;
@@ -92,6 +95,51 @@ export default function NotesAndSettingsView({ onNotify }: NotesAndSettingsViewP
         <div className="text-[11px] text-slate-400 flex items-center justify-between">
           <span>{pendingLotsText.split('\n').filter(Boolean).length} satır kayıtlı</span>
           <span className="text-emerald-600 dark:text-emerald-400 font-semibold">✓ Otomatik senkronize</span>
+        </div>
+      </div>
+
+      {/* Bulut Eşitleme (PC + Telefon) */}
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 shadow-sm space-y-3.5">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="p-2 rounded-xl bg-teal-500/10 text-teal-600">
+              <Cloud className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="text-base font-bold text-slate-800 dark:text-slate-100">
+                Bulut Senkronizasyonu (PC + Telefon)
+              </h2>
+              <p className="text-xs text-slate-400">
+                Bilgisayar ve telefon arasında canlı test aktarımı
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={async () => {
+              const ok = await SyncService.triggerSync();
+              if (ok) {
+                onNotify('✓ Bulut ile başarıyla eşitlendi!');
+              } else if (!navigator.onLine) {
+                onNotify('İnternet bağlantısı yok, veriler lokal hafızada güvende.');
+              } else {
+                onNotify('Vercel Storage henüz bağlanmadı (Lokal Modda çalışıyor).');
+              }
+            }}
+            className="px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs flex items-center gap-1.5 active:scale-95 transition shadow-sm"
+          >
+            <RefreshCw className="w-3.5 h-3.5" />
+            <span>Şimdi Eşitle</span>
+          </button>
+        </div>
+
+        <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-300 space-y-2">
+          <p className="leading-relaxed">
+            • <strong>Nasıl Çalışır?</strong> İnternet varken bilgisayar ve telefonunuz aynı veritabanını kullanır. İnternet kesilirse testler cihazın kendi hafızasında saklanır, internet geldiğinde otomatik buluta aktarılır.
+          </p>
+          <p className="leading-relaxed">
+            • <strong>Vercel'de Aktif Etme:</strong> Vercel panelinizde projenizi açın &gt; <strong>Storage</strong> sekmesine tıklayın &gt; <strong>Postgres (Neon)</strong> veritabanını bağlayın. Kodlar sıfır ayarla anında buluta bağlanacaktır.
+          </p>
         </div>
       </div>
 

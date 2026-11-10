@@ -60,6 +60,21 @@ Uygulama telefonunuzun ana ekranına bir ikon olarak yerleşir ve tam ekran (tar
 
 ---
 
+## ☁️ Bulut Senkronizasyonu (PC + Telefon Canlı Eşitleme)
+
+Uygulama **Hibrit (Offline-First)** mimariyle çalışır:
+- **İnternet varken:** Bilgisayar veya telefondan kaydettiğiniz tüm testler anında bulut veritabanına kaydedilir ve diğer tüm cihazlarda saniyeler içinde görünür.
+- **İnternet kesildiğinde:** Testler cihazın yerel hafızasına (LocalStorage) güvenle kaydedilir. İnternet tekrar geldiğinde arka planda otomatik olarak buluta aktarılır.
+
+### Vercel Storage (Postgres/Neon) Aktif Etme:
+1. [Vercel Dashboard](https://vercel.com)'da projenizi açın.
+2. Üst menüden **"Storage"** sekmesine gidin.
+3. **"Create Database"** butonuna tıklayıp **Postgres (Neon)** seçeneğini seçin.
+4. **"Connect to Project"** diyerek projenize bağlayın.
+5. Vercel gerekli `DATABASE_URL` ve `POSTGRES_URL` ortam değişkenlerini otomatik olarak ekler. Başka hiçbir ayar yapmanıza gerek yoktur!
+
+---
+
 ## 💻 Yerel Geliştirme (Localhost)
 Bilgisayarınızda test etmek için:
 ```bash

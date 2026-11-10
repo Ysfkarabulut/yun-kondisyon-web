@@ -6,6 +6,7 @@ import YunOraniTestView from '@/components/YunOraniTestView';
 import HistoryView from '@/components/HistoryView';
 import NotesAndSettingsView from '@/components/NotesAndSettingsView';
 import StopwatchModal from '@/components/StopwatchModal';
+import SyncBadge from '@/components/SyncBadge';
 import {
   Scale,
   Percent,
@@ -46,15 +47,18 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Global Stopwatch Shortcut */}
-        <button
-          onClick={() => setIsStopwatchOpen(true)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold active:scale-95 transition"
-          title="Kronometreyi Aç"
-        >
-          <Clock className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-          <span>Sayaç</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <SyncBadge />
+          {/* Global Stopwatch Shortcut */}
+          <button
+            onClick={() => setIsStopwatchOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold active:scale-95 transition"
+            title="Kronometreyi Aç"
+          >
+            <Clock className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+            <span>Sayaç</span>
+          </button>
+        </div>
       </header>
 
       {/* Main Content Area */}
