@@ -2,17 +2,26 @@ import { NextResponse } from 'next/server';
 import { getDb, initDb, isDbConfigured } from '@/lib/db';
 
 export async function GET() {
+  const envKeys = [
+    'DATABASE_URL',
+    'POSTGRES_URL',
+    'POSTGRES_PRISMA_URL',
+    'POSTGRES_URL_NON_POOLING',
+    'NEON_DATABASE_URL',
+  ].filter(k => Boolean(process.env[k]));
+
   if (!isDbConfigured()) {
     return NextResponse.json({
       connected: false,
-      message: 'Vercel Storage / Postgres henüz bağlı değil. Lokal modda çalışıyor.',
+      message: 'Veritabanı bağlantı değişkeni bulunamadı. Vercel üzerinde Redeploy yapılması gerekiyor olabilir.',
+      envKeys,
       data: null,
     });
   }
 
   const sql = getDb();
   if (!sql) {
-    return NextResponse.json({ connected: false, data: null });
+    return NextResponse.json({ connected: false, message: 'DB client oluşturulamadı', envKeys, data: null });
   }
 
   try {
@@ -28,6 +37,7 @@ export async function GET() {
 
     return NextResponse.json({
       connected: true,
+      envKeys,
       data: {
         moistureRecords: storeMap['moisture_records'] || [],
         yunOraniRecords: storeMap['yun_orani_records'] || [],
@@ -39,24 +49,33 @@ export async function GET() {
   } catch (error: any) {
     console.error('API Sync GET error:', error);
     return NextResponse.json(
-      { connected: false, error: error.message },
+      { connected: false, error: error.message, envKeys },
       { status: 500 }
     );
   }
 }
 
 export async function POST(request: Request) {
+  const envKeys = [
+    'DATABASE_URL',
+    'POSTGRES_URL',
+    'POSTGRES_PRISMA_URL',
+    'POSTGRES_URL_NON_POOLING',
+    'NEON_DATABASE_URL',
+  ].filter(k => Boolean(process.env[k]));
+
   if (!isDbConfigured()) {
     return NextResponse.json({
       connected: false,
-      message: 'Vercel Storage / Postgres henüz bağlı değil.',
+      message: 'Veritabanı bağlantı değişkeni bulunamadı. Vercel üzerinde Redeploy yapılması gerekiyor.',
+      envKeys,
       data: null,
     });
   }
 
   const sql = getDb();
   if (!sql) {
-    return NextResponse.json({ connected: false, data: null });
+    return NextResponse.json({ connected: false, message: 'DB client oluşturulamadı', envKeys, data: null });
   }
 
   try {
@@ -151,6 +170,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       connected: true,
+      envKeys,
       data: {
         moistureRecords: mergedMoisture,
         yunOraniRecords: mergedYun,
@@ -162,7 +182,7 @@ export async function POST(request: Request) {
   } catch (error: any) {
     console.error('API Sync POST error:', error);
     return NextResponse.json(
-      { connected: false, error: error.message },
+      { connected: false, error: error.message, envKeys },
       { status: 500 }
     );
   }

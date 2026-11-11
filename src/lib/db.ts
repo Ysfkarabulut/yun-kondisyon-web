@@ -5,6 +5,9 @@ function getConnectionString(): string | null {
     process.env.DATABASE_URL ||
     process.env.POSTGRES_URL ||
     process.env.POSTGRES_PRISMA_URL ||
+    process.env.POSTGRES_URL_NON_POOLING ||
+    process.env.NEON_DATABASE_URL ||
+    process.env.VERCEL_POSTGRES_URL ||
     null
   );
 }
@@ -34,6 +37,6 @@ export async function initDb() {
     return true;
   } catch (err) {
     console.error('Failed to init database table:', err);
-    return false;
+    throw err;
   }
 }
