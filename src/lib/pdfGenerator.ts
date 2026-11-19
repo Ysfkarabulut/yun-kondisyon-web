@@ -5,9 +5,55 @@ import autoTable from 'jspdf-autotable';
 import { MoistureTestRecord, YunOraniTestRecord, DryingNoteSession } from './types';
 import { MoistureCalculator, YunOraniCalculator } from './calculations';
 import { Formatting, ParseUtils } from './formatting';
+import { geistFontBase64 } from './fontBase64';
 
-// Helper to share or download PDF on mobile and desktop
-export async function shareOrDownloadPdf(doc: jsPDF, filename: string): Promise<void> {
+/**
+ * Creates a jsPDF document preconfigured with the Turkish-supported Geist UTF-8 font
+ */
+function createGeistDoc(orientation: 'portrait' | 'landscape' = 'portrait'): jsPDF {
+  const doc = new jsPDF({
+    orientation,
+    unit: 'mm',
+    format: 'a4',
+  });
+
+  if (geistFontBase64) {
+    doc.addFileToVFS('Geist.ttf', geistFontBase64);
+    doc.addFont('Geist.ttf', 'Geist', 'normal');
+    doc.addFont('Geist.ttf', 'Geist', 'bold');
+    doc.setFont('Geist', 'normal');
+  }
+
+  return doc;
+}
+
+/**
+ * Directly downloads the PDF file to the user's device (Phone Downloads / PC Downloads)
+ */
+export function downloadPdfFile(doc: jsPDF, filename: string): void {
+  try {
+    doc.save(filename);
+  } catch (err) {
+    // Fallback using Blob & Anchor click for maximum mobile browser compatibility
+    const blob = doc.output('blob');
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 200);
+  }
+}
+
+/**
+ * Opens mobile native share sheet (WhatsApp, Mail, AirDrop, etc.)
+ * Falls back to download if share is unsupported or fails
+ */
+export async function sharePdfFile(doc: jsPDF, filename: string): Promise<void> {
   const blob = doc.output('blob');
   const file = new File([blob], filename, { type: 'application/pdf' });
 
@@ -19,28 +65,22 @@ export async function shareOrDownloadPdf(doc: jsPDF, filename: string): Promise<
       });
       return;
     } catch (e: any) {
-      if (e.name !== 'AbortError') {
-        console.warn('Share failed, falling back to download:', e);
-      } else {
-        return; // User cancelled share
+      if (e.name === 'AbortError') {
+        return; // User intentionally cancelled share dialog
       }
+      console.warn('Share error, falling back to direct download:', e);
     }
   }
 
-  // Fallback download
-  doc.save(filename);
+  downloadPdfFile(doc, filename);
 }
 
 export const PdfGenerator = {
   /**
-   * Kondisyon Test Raporu PDF
+   * Helper to build Kondisyon Test Report Document
    */
-  async generateMoistureReport(record: MoistureTestRecord): Promise<void> {
-    const doc = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4',
-    });
+  buildMoistureDoc(record: MoistureTestRecord): { doc: jsPDF; filename: string } {
+    const doc = createGeistDoc('portrait');
 
     const metrics = MoistureCalculator.calculateAll({
       lotNo: record.lotNo,
@@ -53,18 +93,27 @@ export const PdfGenerator = {
       conditionPercent: record.conditionPercent,
     });
 
-    // Header styling
+    // Header styling - High contrast dark blue banner
     doc.setFillColor(30, 58, 138); // Blue 900
-    doc.rect(0, 0, 210, 24, 'F');
+    doc.rect(0, 0, 210, 26, 'F');
 
+    // Title on left
     doc.setTextColor(255, 255, 255);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(16);
-    doc.text('YÜN KONDİSYON TEST RAPORU', 14, 15);
+    doc.setFont('Geist', 'bold');
+    doc.setFontSize(14);
+    doc.text('YÜN KONDİSYON TEST RAPORU', 14, 12);
 
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`Tarih: ${Formatting.formatDateTime(record.createdAtEpochMs)}`, 140, 15);
+    // Subtitle on left
+    doc.setFont('Geist', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(203, 213, 225); // Slate 300
+    doc.text('Tekstil Laboratuvar Nem ve Ticari Kondisyon Analiz Raporu', 14, 19);
+
+    // Date on right (using right alignment to prevent ANY text collision)
+    doc.setFont('Geist', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(255, 255, 255);
+    doc.text(`Tarih: ${Formatting.formatDateTime(record.createdAtEpochMs)}`, 196, 15, { align: 'right' });
 
     // Build Table Rows
     const rows: [string, string][] = [
@@ -92,84 +141,112 @@ export const PdfGenerator = {
 
     if (metrics?.commercialTotalKg) {
       const commPctStr = metrics.commercialPercentOfIncoming ? `  |  ${Formatting.pct(metrics.commercialPercentOfIncoming)}` : '';
-      rows.push(['Invoice Weight As Per Test', `${Formatting.formatKg(metrics.commercialTotalKg)} kg${commPctStr}`]);
+      rows.push(['Invoice Weight as per Test (Ticari Ağırlık)', `${Formatting.formatKg(metrics.commercialTotalKg)} kg${commPctStr}`]);
     }
 
     rows.push(['Kondisyon KG (Çeki Listesi)', record.conditionKg ? `${Formatting.formatKg(record.conditionKg)} kg` : '—']);
 
     if (metrics?.gainKg !== null && metrics?.gainKg !== undefined && metrics?.gainPercentOfIncoming !== null) {
-      rows.push(['Gain (Fark)', `${Formatting.formatSignedKg(metrics.gainKg)} kg  |  ${Formatting.pct(metrics.gainPercentOfIncoming)}`]);
+      rows.push(['Gain (Kazanım / Fark)', `${Formatting.formatSignedKg(metrics.gainKg)} kg  |  ${Formatting.pct(metrics.gainPercentOfIncoming)}`]);
     }
 
-    rows.push(['Kondisyon Oranı (Çeki Listesi)', record.conditionPercent ? Formatting.pct(record.conditionPercent) : '—']);
+    rows.push(['Kondisyon Oranı % (Çeki Listesi)', record.conditionPercent ? Formatting.pct(record.conditionPercent) : '—']);
 
     autoTable(doc, {
-      startY: 32,
+      startY: 34,
       head: [['Parametre', 'Değer']],
       body: rows,
       theme: 'grid',
-      headStyles: {
-        fillColor: [30, 58, 138],
-        textColor: 255,
-        fontStyle: 'bold',
-        fontSize: 10,
-      },
       styles: {
+        font: 'Geist',
+        fontStyle: 'normal',
         fontSize: 9.5,
         cellPadding: 3.5,
+        textColor: [15, 23, 42],
+      },
+      headStyles: {
+        font: 'Geist',
+        fontStyle: 'bold',
+        fillColor: [30, 58, 138],
+        textColor: 255,
+        fontSize: 10,
       },
       columnStyles: {
-        0: { fontStyle: 'bold', cellWidth: 90 },
-        1: { cellWidth: 95 },
+        0: { fontStyle: 'bold', cellWidth: 92 },
+        1: { cellWidth: 92 },
+      },
+      alternateRowStyles: {
+        fillColor: [248, 250, 252],
       },
     });
 
-    // Footnotes / Formulas
-    const finalY = (doc as any).lastAutoTable.finalY + 10;
+    // Footnotes / Formulas with proper UTF-8 Geist font
+    const finalY = (doc as any).lastAutoTable.finalY + 8;
+    doc.setFont('Geist', 'bold');
+    doc.setFontSize(8.5);
+    doc.setTextColor(71, 85, 105);
+    doc.text('Formül Açıklamaları:', 14, finalY);
+
+    doc.setFont('Geist', 'normal');
     doc.setFontSize(8);
     doc.setTextColor(100, 116, 139);
-    doc.text('Formül Açıklamaları:', 14, finalY);
-    doc.text('• Moisture Content: (Numune (Nemli) - Numune (Kuru)) / Numune (Nemli) * 100', 14, finalY + 4.5);
-    doc.text('• Regain: (Numune (Nemli) - Numune (Kuru)) / Numune (Kuru) * 100', 14, finalY + 9);
-    doc.text('• Total Dry Weight: Net KG * (Numune (Kuru) / Numune (Nemli))', 14, finalY + 13.5);
-    doc.text('• Invoice Weight: Total Dry Weight * (1 + Standart Nem / 100)', 14, finalY + 18);
+    doc.text('• Moisture Content: (Numune (Nemli) - Numune (Kuru)) / Numune (Nemli) × 100', 14, finalY + 4.5);
+    doc.text('• Regain: (Numune (Nemli) - Numune (Kuru)) / Numune (Kuru) × 100', 14, finalY + 9);
+    doc.text('• Total Dry Weight: Net KG × (Numune (Kuru) / Numune (Nemli))', 14, finalY + 13.5);
+    doc.text('• Invoice Weight: Total Dry Weight × (1 + Standart Nem / 100)', 14, finalY + 18);
     doc.text('• Gain: Invoice Weight - Net KG', 14, finalY + 22.5);
+    doc.text('• Kondisyon Oranı (Çeki): ((Kondisyon KG - Net KG) / Net KG) × 100', 14, finalY + 27);
 
-    const filename = `Kondisyon_${record.lotNo || 'Test'}_${Formatting.formatDateTime(record.createdAtEpochMs).replace(/[: ]/g, '_')}.pdf`;
-    await shareOrDownloadPdf(doc, filename);
+    const safeLot = (record.lotNo || 'Test').replace(/[^a-zA-Z0-9_-]/g, '_');
+    const filename = `Kondisyon_${safeLot}_${Formatting.formatDateTime(record.createdAtEpochMs).replace(/[: .]/g, '_')}.pdf`;
+    return { doc, filename };
+  },
+
+  async downloadMoistureReport(record: MoistureTestRecord): Promise<void> {
+    const { doc, filename } = this.buildMoistureDoc(record);
+    downloadPdfFile(doc, filename);
+  },
+
+  async shareMoistureReport(record: MoistureTestRecord): Promise<void> {
+    const { doc, filename } = this.buildMoistureDoc(record);
+    await sharePdfFile(doc, filename);
+  },
+
+  // Backward compatibility alias
+  async generateMoistureReport(record: MoistureTestRecord): Promise<void> {
+    return this.downloadMoistureReport(record);
   },
 
   /**
-   * Yün Oranı Çoklu veya Tekli Test Raporu (Tek sayfada alt alta kompakt ve çizgili)
+   * Helper to build Yün Oranı Report Document
    */
-  async generateYunOraniReport(tests: YunOraniTestRecord[]): Promise<void> {
-    if (tests.length === 0) return;
+  buildYunOraniDoc(tests: YunOraniTestRecord[]): { doc: jsPDF; filename: string } {
+    const doc = createGeistDoc('portrait');
 
-    const doc = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4',
-    });
-
-    // Header
+    // Header banner
     doc.setFillColor(15, 118, 110); // Teal 700
-    doc.rect(0, 0, 210, 22, 'F');
+    doc.rect(0, 0, 210, 26, 'F');
 
     doc.setTextColor(255, 255, 255);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(15);
-    doc.text('YÜN ORANI TEST RAPORU', 14, 14);
+    doc.setFont('Geist', 'bold');
+    doc.setFontSize(14);
+    doc.text('YÜN ORANI TEST RAPORU', 14, 12);
 
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`Tarih: ${new Date().toLocaleDateString('tr-TR')}`, 160, 14);
+    doc.setFont('Geist', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(204, 251, 241); // Teal 100
+    doc.text('Kostik ve Yıkama Karışım Analizleri Raporu', 14, 19);
 
-    let currentY = 28;
+    doc.setFont('Geist', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(255, 255, 255);
+    doc.text(`Tarih: ${new Date().toLocaleDateString('tr-TR')}`, 196, 15, { align: 'right' });
+
+    let currentY = 32;
     const pageHeight = 297;
     const margin = 14;
 
     tests.forEach((t, idx) => {
-      // Find final dry measurements
       const m1Final = t.sample1Measurements.length > 0
         ? [...t.sample1Measurements].sort((a, b) => b.sequence - a.sequence)[0]
         : null;
@@ -184,7 +261,7 @@ export const PdfGenerator = {
         ? YunOraniCalculator.calculate(s1Val, s2Val)
         : null;
 
-      // Check if we need a new page
+      // Check page break
       if (currentY + 45 > pageHeight - 15) {
         doc.addPage();
         currentY = 20;
@@ -195,15 +272,15 @@ export const PdfGenerator = {
       doc.roundedRect(margin, currentY, 182, 40, 2, 2, 'F');
 
       // Card Header
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(11);
+      doc.setFont('Geist', 'bold');
+      doc.setFontSize(10.5);
       doc.setTextColor(15, 23, 42);
       doc.text(`${idx + 1}. Lot / Hammadde: ${t.hammaddeLot || '—'}`, margin + 4, currentY + 7);
 
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8.5);
+      doc.setFont('Geist', 'normal');
+      doc.setFontSize(8);
       doc.setTextColor(100, 116, 139);
-      doc.text(`Tarih: ${Formatting.formatDateTime(t.createdAtEpochMs)}`, margin + 110, currentY + 7);
+      doc.text(`Tarih: ${Formatting.formatDateTime(t.createdAtEpochMs)}`, margin + 178, currentY + 7, { align: 'right' });
 
       // Measurements info
       doc.setFontSize(9);
@@ -221,7 +298,7 @@ export const PdfGenerator = {
       doc.setFillColor(240, 253, 250);
       doc.rect(margin + 4, currentY + 26, 174, 9, 'F');
 
-      doc.setFont('helvetica', 'bold');
+      doc.setFont('Geist', 'bold');
       doc.setFontSize(9.5);
       if (ratio) {
         doc.setTextColor(13, 148, 136); // Teal 600
@@ -242,45 +319,65 @@ export const PdfGenerator = {
     });
 
     // Footnote
-    if (currentY + 20 < pageHeight) {
+    if (currentY + 15 < pageHeight) {
+      doc.setFont('Geist', 'normal');
       doc.setFontSize(8);
       doc.setTextColor(148, 163, 184);
       doc.text('Hesap formülü: Diğer oranı (%) = Numune 1 son tartım / Numune 2 son tartım × 100; Yün oranı (%) = 100 − Diğer', margin, currentY + 6);
     }
 
     const filename = `Yun_Orani_Raporu_${tests.length}_test_${new Date().toLocaleDateString('tr-TR').replace(/\./g, '_')}.pdf`;
-    await shareOrDownloadPdf(doc, filename);
+    return { doc, filename };
+  },
+
+  async downloadYunOraniReport(tests: YunOraniTestRecord[]): Promise<void> {
+    if (tests.length === 0) return;
+    const { doc, filename } = this.buildYunOraniDoc(tests);
+    downloadPdfFile(doc, filename);
+  },
+
+  async shareYunOraniReport(tests: YunOraniTestRecord[]): Promise<void> {
+    if (tests.length === 0) return;
+    const { doc, filename } = this.buildYunOraniDoc(tests);
+    await sharePdfFile(doc, filename);
+  },
+
+  // Backward compatibility alias
+  async generateYunOraniReport(tests: YunOraniTestRecord[]): Promise<void> {
+    return this.downloadYunOraniReport(tests);
   },
 
   /**
-   * Kurutma Notları Seansı PDF Raporu
+   * Helper to build Drying Session Report Document
    */
-  async generateDryingSessionReport(session: DryingNoteSession): Promise<void> {
-    const doc = new jsPDF({
-      orientation: 'portrait',
-      unit: 'mm',
-      format: 'a4',
-    });
+  buildDryingSessionDoc(session: DryingNoteSession): { doc: jsPDF; filename: string } {
+    const doc = createGeistDoc('portrait');
 
-    // Header
+    // Header banner
     doc.setFillColor(79, 70, 229); // Indigo 600
-    doc.rect(0, 0, 210, 22, 'F');
+    doc.rect(0, 0, 210, 26, 'F');
 
     doc.setTextColor(255, 255, 255);
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(15);
-    doc.text('KURUTMA NOTLARI RAPORU', 14, 14);
+    doc.setFont('Geist', 'bold');
+    doc.setFontSize(14);
+    doc.text('KURUTMA NOTLARI RAPORU', 14, 12);
 
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'normal');
-    doc.text(`Tarih: ${Formatting.formatDateTime(session.archivedAtEpochMs)}`, 140, 14);
+    doc.setFont('Geist', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(224, 231, 255); // Indigo 100
+    doc.text('Fırın Tartım Takip ve Dara Analizi', 14, 19);
+
+    doc.setFont('Geist', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(255, 255, 255);
+    doc.text(`Tarih: ${Formatting.formatDateTime(session.archivedAtEpochMs)}`, 196, 15, { align: 'right' });
 
     // Metadata
     doc.setTextColor(30, 41, 59);
     doc.setFontSize(10);
-    doc.setFont('helvetica', 'bold');
-    doc.text(`Hammadde (Lot No): ${session.hammaddeLot || '—'}`, 14, 32);
-    doc.text(`TARE (Dara): ${session.tare ? `${session.tare} g` : '—'}`, 120, 32);
+    doc.setFont('Geist', 'bold');
+    doc.text(`Hammadde (Lot No): ${session.hammaddeLot || '—'}`, 14, 34);
+    doc.text(`TARE (Dara): ${session.tare ? `${session.tare} g` : '—'}`, 120, 34);
 
     const sortedRows = [...session.measurements].sort((a, b) => a.sequence - b.sequence);
     const tableBody = sortedRows.map(r => [
@@ -290,20 +387,39 @@ export const PdfGenerator = {
     ]);
 
     autoTable(doc, {
-      startY: 38,
+      startY: 40,
       head: [['Sıra', 'Saat', 'Ölçüm Değeri']],
       body: tableBody,
       theme: 'striped',
+      styles: {
+        font: 'Geist',
+        fontSize: 9.5,
+      },
       headStyles: {
+        font: 'Geist',
+        fontStyle: 'bold',
         fillColor: [79, 70, 229],
         textColor: 255,
       },
-      styles: {
-        fontSize: 9.5,
-      },
     });
 
-    const filename = `Kurutma_Notlari_${session.hammaddeLot || 'Lot'}.pdf`;
-    await shareOrDownloadPdf(doc, filename);
+    const safeLot = (session.hammaddeLot || 'Lot').replace(/[^a-zA-Z0-9_-]/g, '_');
+    const filename = `Kurutma_Notlari_${safeLot}.pdf`;
+    return { doc, filename };
+  },
+
+  async downloadDryingSessionReport(session: DryingNoteSession): Promise<void> {
+    const { doc, filename } = this.buildDryingSessionDoc(session);
+    downloadPdfFile(doc, filename);
+  },
+
+  async shareDryingSessionReport(session: DryingNoteSession): Promise<void> {
+    const { doc, filename } = this.buildDryingSessionDoc(session);
+    await sharePdfFile(doc, filename);
+  },
+
+  // Backward compatibility alias
+  async generateDryingSessionReport(session: DryingNoteSession): Promise<void> {
+    return this.downloadDryingSessionReport(session);
   },
 };

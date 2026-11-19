@@ -10,6 +10,7 @@ import {
   FileText,
   Trash2,
   Share2,
+  Download,
   CheckSquare,
   Square,
   Search,
@@ -232,18 +233,37 @@ export default function HistoryView({ onNotify }: HistoryViewProps) {
           </button>
 
           {selectedYunIds.length > 0 && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
               <button
-                onClick={handleShareSelectedYunPdf}
-                className="px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs flex items-center gap-1.5 shadow-sm active:scale-95 transition"
+                onClick={async () => {
+                  const selected = yunOraniRecords.filter(r => selectedYunIds.includes(r.id));
+                  if (selected.length === 0) return;
+                  await PdfGenerator.downloadYunOraniReport(selected);
+                  onNotify(`✓ ${selected.length} adet test PDF olarak cihaza indirildi.`);
+                }}
+                className="px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs flex items-center gap-1 shadow-sm active:scale-95 transition"
+                title="Cihaza İndir"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>İndir</span>
+              </button>
+
+              <button
+                onClick={async () => {
+                  const selected = yunOraniRecords.filter(r => selectedYunIds.includes(r.id));
+                  if (selected.length === 0) return;
+                  await PdfGenerator.shareYunOraniReport(selected);
+                }}
+                className="px-3 py-1.5 rounded-xl border border-teal-300 dark:border-teal-700 text-teal-800 dark:text-teal-200 hover:bg-teal-100/50 font-semibold text-xs flex items-center gap-1 active:scale-95 transition"
+                title="Paylaş"
               >
                 <Share2 className="w-3.5 h-3.5" />
-                <span>Tek Sayfa PDF</span>
+                <span>Paylaş</span>
               </button>
 
               <button
                 onClick={handleDeleteSelectedYun}
-                className="p-1.5 rounded-xl bg-rose-500/10 text-rose-600 hover:bg-rose-500/20 active:scale-95 transition"
+                className="p-1.5 rounded-xl bg-rose-500/10 text-rose-600 hover:bg-rose-500/20 active:scale-95 transition ml-1"
                 title="Seçilenleri Sil"
               >
                 <Trash2 className="w-4 h-4" />
@@ -298,9 +318,29 @@ export default function HistoryView({ onNotify }: HistoryViewProps) {
 
                     <div className="flex items-center gap-1" onClick={e => e.stopPropagation()}>
                       <button
-                        onClick={() => handleDownloadMoisturePdf(record)}
+                        onClick={async () => {
+                          try {
+                            await PdfGenerator.downloadMoistureReport(record);
+                            onNotify('✓ PDF başarıyla cihaza indirildi.');
+                          } catch (e) {
+                            onNotify('İndirme sırasında hata oluştu.');
+                          }
+                        }}
                         className="p-2 rounded-xl text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 transition"
-                        title="PDF Paylaş / İndir"
+                        title="PDF İndir"
+                      >
+                        <Download className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={async () => {
+                          try {
+                            await PdfGenerator.shareMoistureReport(record);
+                          } catch (e) {
+                            onNotify('Paylaşım sırasında hata oluştu.');
+                          }
+                        }}
+                        className="p-2 rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+                        title="PDF Paylaş"
                       >
                         <Share2 className="w-4 h-4" />
                       </button>
@@ -420,9 +460,29 @@ export default function HistoryView({ onNotify }: HistoryViewProps) {
 
                     <div className="flex items-center gap-1" onClick={e => e.stopPropagation()}>
                       <button
-                        onClick={() => PdfGenerator.generateYunOraniReport([t])}
+                        onClick={async () => {
+                          try {
+                            await PdfGenerator.downloadYunOraniReport([t]);
+                            onNotify('✓ PDF başarıyla cihaza indirildi.');
+                          } catch (e) {
+                            onNotify('İndirme hatası.');
+                          }
+                        }}
                         className="p-2 rounded-xl text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/50 transition"
-                        title="Tek Başına PDF İndir"
+                        title="PDF İndir"
+                      >
+                        <Download className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={async () => {
+                          try {
+                            await PdfGenerator.shareYunOraniReport([t]);
+                          } catch (e) {
+                            onNotify('Paylaşım hatası.');
+                          }
+                        }}
+                        className="p-2 rounded-xl text-slate-500 hover:text-teal-600 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+                        title="PDF Paylaş"
                       >
                         <Share2 className="w-4 h-4" />
                       </button>
@@ -516,9 +576,29 @@ export default function HistoryView({ onNotify }: HistoryViewProps) {
 
                   <div className="flex items-center gap-1">
                     <button
-                      onClick={() => handleDownloadDryingPdf(session)}
+                      onClick={async () => {
+                        try {
+                          await PdfGenerator.downloadDryingSessionReport(session);
+                          onNotify('✓ PDF başarıyla cihaza indirildi.');
+                        } catch (e) {
+                          onNotify('İndirme hatası.');
+                        }
+                      }}
                       className="p-2 rounded-xl text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 transition"
                       title="PDF İndir"
+                    >
+                      <Download className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={async () => {
+                        try {
+                          await PdfGenerator.shareDryingSessionReport(session);
+                        } catch (e) {
+                          onNotify('Paylaşım hatası.');
+                        }
+                      }}
+                      className="p-2 rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+                      title="PDF Paylaş"
                     >
                       <Share2 className="w-4 h-4" />
                     </button>
@@ -668,18 +748,39 @@ export default function HistoryView({ onNotify }: HistoryViewProps) {
                   </div>
 
                   {/* Actions in Modal */}
-                  <div className="pt-4 flex gap-3">
+                  <div className="pt-4 flex flex-col sm:flex-row gap-2">
                     <button
-                      onClick={() => handleDownloadMoisturePdf(r)}
-                      className="flex-1 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold flex items-center justify-center gap-2 shadow-md transition"
+                      onClick={async () => {
+                        try {
+                          await PdfGenerator.downloadMoistureReport(r);
+                          onNotify('✓ PDF başarıyla cihaza indirildi.');
+                        } catch (e) {
+                          onNotify('İndirme sırasında hata oluştu.');
+                        }
+                      }}
+                      className="flex-1 py-3 px-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold flex items-center justify-center gap-2 shadow-md active:scale-98 transition text-xs sm:text-sm"
+                    >
+                      <Download className="w-4 h-4" />
+                      <span>PDF İndir</span>
+                    </button>
+
+                    <button
+                      onClick={async () => {
+                        try {
+                          await PdfGenerator.shareMoistureReport(r);
+                        } catch (e) {
+                          onNotify('Paylaşım sırasında hata oluştu.');
+                        }
+                      }}
+                      className="py-3 px-5 rounded-2xl border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 font-semibold flex items-center justify-center gap-2 active:scale-98 transition text-xs sm:text-sm"
                     >
                       <Share2 className="w-4 h-4" />
-                      <span>PDF Paylaş / İndir</span>
+                      <span>Paylaş</span>
                     </button>
 
                     <button
                       onClick={() => handleDeleteMoisture(r.id)}
-                      className="px-4 py-3 rounded-2xl border border-rose-200 dark:border-rose-900/50 text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 font-semibold transition"
+                      className="py-3 px-4 rounded-2xl border border-rose-200 dark:border-rose-900/50 text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 font-semibold transition text-xs sm:text-sm"
                     >
                       Sil
                     </button>
