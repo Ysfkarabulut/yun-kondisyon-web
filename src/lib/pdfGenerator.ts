@@ -51,9 +51,13 @@ export function downloadPdfFile(doc: jsPDF, filename: string): void {
 
 /**
  * Opens mobile native share sheet (WhatsApp, Mail, AirDrop, etc.)
- * Falls back to download if share is unsupported or fails
+ * Sets clean email subject title and falls back to download if share is unsupported or fails
  */
-export async function sharePdfFile(doc: jsPDF, filename: string): Promise<void> {
+export async function sharePdfFile(
+  doc: jsPDF,
+  filename: string,
+  title: string = 'Kondisyon Test Raporu'
+): Promise<void> {
   const blob = doc.output('blob');
   const file = new File([blob], filename, { type: 'application/pdf' });
 
@@ -61,7 +65,7 @@ export async function sharePdfFile(doc: jsPDF, filename: string): Promise<void> 
     try {
       await navigator.share({
         files: [file],
-        title: filename,
+        title: title,
       });
       return;
     } catch (e: any) {
@@ -197,8 +201,9 @@ export const PdfGenerator = {
     doc.text('• Gain: Invoice Weight - Net KG', 14, finalY + 22.5);
     doc.text('• Kondisyon Oranı (Çeki): ((Kondisyon KG - Net KG) / Net KG) × 100', 14, finalY + 27);
 
-    const safeLot = (record.lotNo || 'Test').replace(/[^a-zA-Z0-9_-]/g, '_');
-    const filename = `Kondisyon_${safeLot}_${Formatting.formatDateTime(record.createdAtEpochMs).replace(/[: .]/g, '_')}.pdf`;
+    const cleanLot = (record.lotNo || 'Test').replace(/[\/\\:*?"<>|]/g, ' ').trim();
+    const cleanDate = Formatting.formatDateTime(record.createdAtEpochMs).replace(/:/g, '.');
+    const filename = `Kondisyon ${cleanLot} ${cleanDate}.pdf`;
     return { doc, filename };
   },
 
@@ -209,7 +214,7 @@ export const PdfGenerator = {
 
   async shareMoistureReport(record: MoistureTestRecord): Promise<void> {
     const { doc, filename } = this.buildMoistureDoc(record);
-    await sharePdfFile(doc, filename);
+    await sharePdfFile(doc, filename, 'Kondisyon Test Raporu');
   },
 
   // Backward compatibility alias
@@ -326,7 +331,8 @@ export const PdfGenerator = {
       doc.text('Hesap formülü: Diğer oranı (%) = Numune 1 son tartım / Numune 2 son tartım × 100; Yün oranı (%) = 100 − Diğer', margin, currentY + 6);
     }
 
-    const filename = `Yun_Orani_Raporu_${tests.length}_test_${new Date().toLocaleDateString('tr-TR').replace(/\./g, '_')}.pdf`;
+    const dateStr = new Date().toLocaleDateString('tr-TR');
+    const filename = `Yün Oranı Raporu ${tests.length} Test ${dateStr}.pdf`;
     return { doc, filename };
   },
 
@@ -339,7 +345,7 @@ export const PdfGenerator = {
   async shareYunOraniReport(tests: YunOraniTestRecord[]): Promise<void> {
     if (tests.length === 0) return;
     const { doc, filename } = this.buildYunOraniDoc(tests);
-    await sharePdfFile(doc, filename);
+    await sharePdfFile(doc, filename, 'Yün Oranı Test Raporu');
   },
 
   // Backward compatibility alias
@@ -403,8 +409,9 @@ export const PdfGenerator = {
       },
     });
 
-    const safeLot = (session.hammaddeLot || 'Lot').replace(/[^a-zA-Z0-9_-]/g, '_');
-    const filename = `Kurutma_Notlari_${safeLot}.pdf`;
+    const cleanLot = (session.hammaddeLot || 'Lot').replace(/[\/\\:*?"<>|]/g, ' ').trim();
+    const cleanDate = Formatting.formatDateTime(session.archivedAtEpochMs).replace(/:/g, '.');
+    const filename = `Kurutma Notları ${cleanLot} ${cleanDate}.pdf`;
     return { doc, filename };
   },
 
@@ -415,7 +422,7 @@ export const PdfGenerator = {
 
   async shareDryingSessionReport(session: DryingNoteSession): Promise<void> {
     const { doc, filename } = this.buildDryingSessionDoc(session);
-    await sharePdfFile(doc, filename);
+    await sharePdfFile(doc, filename, 'Kurutma Notları Raporu');
   },
 
   // Backward compatibility alias
