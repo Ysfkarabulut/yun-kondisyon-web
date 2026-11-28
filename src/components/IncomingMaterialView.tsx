@@ -72,7 +72,7 @@ export default function IncomingMaterialView({ onNotify, onStartTest }: Incoming
     'w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-sky-500';
 
   return (
-    <div className="space-y-5 pb-24">
+    <div className="space-y-5 pb-24 lg:pb-8">
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Hammadde Kayıt</h1>
         <p className="text-xs text-slate-500">Gelen hammaddeler, geliş tarihi ve kondisyon testi durumu</p>
@@ -142,7 +142,7 @@ export default function IncomingMaterialView({ onNotify, onStartTest }: Incoming
 
       {visible.length === 0 && <p className="text-center text-sm text-slate-400 py-10">Bu listede kayıt yok.</p>}
 
-      <div className="space-y-2.5">
+      <div className="space-y-2.5 lg:space-y-0 lg:grid lg:grid-cols-2 2xl:grid-cols-3 lg:gap-3 lg:items-start">
         {visible.map(m => {
           const test = testFor(m);
           const tested = isTested(m);

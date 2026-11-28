@@ -39,10 +39,17 @@ export interface DryingNoteSession {
   archivedAtEpochMs: number;
 }
 
-/** Sertifikalı hammadde sevkiyat takibi (sipariş → teslim → TC belgesi → portal kaydı) */
+/** Sertifika standartları (Excel takip dosyasındaki sayfalara karşılık gelir) */
+export const CERT_STANDARDS = ['GOTS', 'RWS', 'GRS', 'Pamuk', 'SFA'] as const;
+export type CertStandard = (typeof CERT_STANDARDS)[number];
+
+/** Sertifikalı hammadde sevkiyat takibi (sipariş → geliş → TC belgesi → portal kaydı) */
 export interface CertifiedShipment {
   id: string;
-  orderText: string; // Sipariş / sevkiyat açıklaması
+  orderText: string; // Ürün cinsi / sipariş açıklaması
+  supplier?: string; // Firma
+  kg?: number | null;
+  standards?: CertStandard[]; // Birden fazla olabilir (ör. GOTS + RWS)
   receivedDate: string; // YYYY-MM-DD, boş = henüz gelmedi
   tcReceived: boolean;
   tcDate: string; // YYYY-MM-DD

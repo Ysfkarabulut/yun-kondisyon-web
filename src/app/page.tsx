@@ -52,48 +52,77 @@ export default function Home() {
     window.scrollTo({ top: 0 });
   };
 
-  return (
-    <main className="min-h-screen flex flex-col max-w-xl mx-auto w-full relative">
-      {/* Top Mobile Bar */}
-      <header className="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/70 dark:border-slate-800/70 px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-600/20">
-            <Scale className="w-4 h-4" />
-          </div>
-          <div>
-            <h1 className="text-sm font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
-              Yün Test Laboratuvarı
-            </h1>
-            <span className="text-[10px] text-slate-400 font-medium block">
-              Kondisyon &amp; Oran Analizleri
-            </span>
-          </div>
-        </div>
+  // Tablo/liste ekranları masaüstünde tam genişlik kullanır, form ekranları okunaklı genişlikte kalır
+  const isWideTab = activeTab === 'sertifikali' || activeTab === 'hammadde' || activeTab === 'history';
 
-        <div className="flex items-center gap-2">
-          <SyncBadge />
-          {/* Global Stopwatch Shortcut */}
-          <button
-            onClick={() => setIsStopwatchOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold active:scale-95 transition"
-            title="Kronometreyi Aç"
-          >
-            <Clock className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
-            <span>Sayaç</span>
-          </button>
+  return (
+    <main className="min-h-screen flex flex-col w-full relative">
+      {/* Top Bar */}
+      <header className="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/70 dark:border-slate-800/70">
+        <div className="max-w-xl lg:max-w-none mx-auto px-4 lg:px-6 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-600/20">
+              <Scale className="w-4 h-4" />
+            </div>
+            <div>
+              <h1 className="text-sm font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                Yün Test Laboratuvarı
+              </h1>
+              <span className="text-[10px] text-slate-400 font-medium block">
+                Kondisyon &amp; Oran Analizleri
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <SyncBadge />
+            {/* Global Stopwatch Shortcut */}
+            <button
+              onClick={() => setIsStopwatchOpen(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold active:scale-95 transition"
+              title="Kronometreyi Aç"
+            >
+              <Clock className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+              <span>Sayaç</span>
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <div className="flex-1 p-4">
-        {activeTab === 'kondisyon' && <KondisyonTestView onNotify={showNotification} />}
-        {activeTab === 'yunOrani' && <YunOraniTestView onNotify={showNotification} />}
-        {activeTab === 'hammadde' && (
-          <IncomingMaterialView onNotify={showNotification} onStartTest={startConditionTest} />
-        )}
-        {activeTab === 'sertifikali' && <CertifiedMaterialView onNotify={showNotification} />}
-        {activeTab === 'history' && <HistoryView onNotify={showNotification} />}
-        {activeTab === 'notes' && <NotesAndSettingsView onNotify={showNotification} />}
+      <div className="flex-1 flex w-full">
+        {/* Masaüstü: sol menü */}
+        <aside className="hidden lg:flex flex-col gap-1 w-56 shrink-0 sticky top-[57px] h-[calc(100vh-57px)] p-3 border-r border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-900/40">
+          {TABS.map(({ key, label, Icon, active }) => (
+            <button
+              key={key}
+              onClick={() => setActiveTab(key)}
+              className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-left transition ${
+                activeTab === key
+                  ? `${active} font-bold bg-slate-100 dark:bg-slate-800`
+                  : 'text-slate-500 hover:text-slate-800 hover:bg-slate-100 dark:hover:text-slate-200 dark:hover:bg-slate-800/60 font-medium'
+              }`}
+            >
+              <div className="p-1 rounded-lg">
+                <Icon className="w-5 h-5" />
+              </div>
+              {label}
+            </button>
+          ))}
+        </aside>
+
+        {/* Main Content Area */}
+        <div className="flex-1 min-w-0 p-4 lg:p-8">
+          <div className={`mx-auto w-full ${isWideTab ? 'max-w-xl lg:max-w-7xl' : 'max-w-xl lg:max-w-3xl'}`}>
+            {activeTab === 'kondisyon' && <KondisyonTestView onNotify={showNotification} />}
+            {activeTab === 'yunOrani' && <YunOraniTestView onNotify={showNotification} />}
+            {activeTab === 'hammadde' && (
+              <IncomingMaterialView onNotify={showNotification} onStartTest={startConditionTest} />
+            )}
+            {activeTab === 'sertifikali' && <CertifiedMaterialView onNotify={showNotification} />}
+            {activeTab === 'history' && <HistoryView onNotify={showNotification} />}
+            {activeTab === 'notes' && <NotesAndSettingsView onNotify={showNotification} />}
+          </div>
+        </div>
       </div>
 
       {/* Global Stopwatch Modal */}
@@ -109,8 +138,8 @@ export default function Home() {
         </div>
       )}
 
-      {/* Fixed Bottom Navigation Bar (Thumb ergonomic for mobile) */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-[env(safe-area-inset-bottom)]">
+      {/* Mobil: alt menü (başparmak erişimi) */}
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-[env(safe-area-inset-bottom)]">
         <div className="max-w-xl mx-auto flex items-center justify-around px-1 py-2">
           {TABS.map(({ key, label, Icon, active }) => (
             <button

@@ -153,11 +153,13 @@ export const StorageService = {
     safeSet(STORAGE_KEYS.CERTIFIED_SHIPMENTS, items);
   },
 
-  addCertifiedShipment(orderText: string): CertifiedShipment {
+  addCertifiedShipment(
+    fields: Pick<CertifiedShipment, 'orderText' | 'supplier' | 'kg' | 'standards'>
+  ): CertifiedShipment {
     const now = Date.now();
     const item: CertifiedShipment = {
       id: 'c_' + now + '_' + Math.random().toString(36).substring(2, 7),
-      orderText,
+      ...fields,
       receivedDate: '',
       tcReceived: false,
       tcDate: '',
