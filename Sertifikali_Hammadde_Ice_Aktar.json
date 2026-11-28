@@ -1,0 +1,2167 @@
+{
+  "version": 1,
+  "exportedAt": "2026-11-28T10:11:51.078843",
+  "source": "SERTİFİKALI HAMMADDE YENİ.xlsx",
+  "certifiedShipments": [
+    {
+      "id": "xl_gots_36",
+      "orderText": "BG 204 19.5 MİC GOTS TOPS LOT :",
+      "supplier": "FUHRMANN",
+      "kg": 13000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1795849911027,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_37",
+      "orderText": "ARGENTİNİAN ORGANİC+ RWS WOOL TOPS 20.5 MİC GOTS + RWS 01/526 LOT : 7176",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 13000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1795849911026,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_40",
+      "orderText": "BG 203 17.5 MİC RWS TOPS LOT :",
+      "supplier": "FUHRMANN",
+      "kg": 13000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1795849911023,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_41",
+      "orderText": "ARGENTİNİAN RWS WOOL TOPS 19.5 MİC RWS 01/525 LOT : 7173",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 13000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1795849911022,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_43",
+      "orderText": "BG 0281 20.5 MİC GOTS + RWS LOT :",
+      "supplier": "FUHRMANN",
+      "kg": 25000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1795849911020,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_43",
+      "orderText": "19.5 RWS TOPS 01/568 LOT :",
+      "supplier": "DE BREMHOEVE ( ITUZUANGO )",
+      "kg": 12500.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1795849911020,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_44",
+      "orderText": "19.5 GOTS TOPS 02/0100. LOT :",
+      "supplier": "DE BREMHOEVE ( ITUZUANGO )",
+      "kg": 12500.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1795849911019,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_45",
+      "orderText": "SA 714 21.5 RWS OPEN TOPS",
+      "supplier": "FOX",
+      "kg": 11000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1795849911018,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_46",
+      "orderText": "GC 11746 20.5 RWS MCO53 CARBONISED",
+      "supplier": "MİCHELL",
+      "kg": 10000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1795849911017,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_34",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL TOPS CH195 19.5 MİC GOTS 01/493 LOT : 7149",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 13250.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-11-13",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1794560400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_35",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL TOPS CH205 20.5 MİC GOTS 01/494 LOT : 7163",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 13250.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-11-13",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1794560400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_18",
+      "orderText": "% 100 WOL ( GRS )",
+      "supplier": "GORİTEX",
+      "kg": 1500.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2026-11-10",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1794301200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_19",
+      "orderText": "% 85 WOOL % 15 POLYAMİDE (GRS )",
+      "supplier": "GORİTEX",
+      "kg": 15900.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2026-11-10",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1794301200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_44",
+      "orderText": "SA 708 20.7 RWS TOPS LOT : SL 1009",
+      "supplier": "FOX",
+      "kg": 7600.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2026-10-30",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1793350800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_sfa_2",
+      "orderText": "MONGOLİAN BROWN SFA CASHMERE 38/40 MM LOT : SL 038",
+      "supplier": "VICUNIA",
+      "kg": 260.0,
+      "standards": [
+        "SFA"
+      ],
+      "receivedDate": "2026-10-17",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1792227600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_17",
+      "orderText": "GRS CASHMERE",
+      "supplier": "TESMA",
+      "kg": 1031.6,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2026-10-10",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1791622800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_28",
+      "orderText": "OCS PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 5043.6,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2026-10-03",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1791018000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_29",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 5000.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2026-10-03",
+      "tcReceived": false,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1791018000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_16",
+      "orderText": "RENCYLE PA 3.3 50 MM GRS SEMİ DULL",
+      "supplier": "RADİCİ",
+      "kg": 20000.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2026-09-02",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1788339600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_40",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL TOPS 19.5 MİC GOTS 01/531 LOT : 7147",
+      "supplier": "DE BREMHOEVE ( ITUZUANGO )",
+      "kg": 4500.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-08-29",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1787994000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_41",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL TOPS 21.5 MİC GOTS 01/532 LOT : 7071-7098-7114-7127",
+      "supplier": "DE BREMHOEVE ( ITUZUANGO )",
+      "kg": 5000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-08-29",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1787994000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_42",
+      "orderText": "ARGENTİNİAN ORGANİC + RWS WOOL TOPS 20.5 MİC GOTS+ RWS 01/533 70 MM LOT : 7121",
+      "supplier": "DE BREMHOEVE ( ITUZUANGO )",
+      "kg": 1300.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-08-29",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1787994000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_42",
+      "orderText": "ARGENTİNİAN RWS WOOL TOPS 16.5 MİC RWS 01/534 LOT : 7005",
+      "supplier": "DE BREMHOEVE ( ITUZUANGO )",
+      "kg": 400.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2026-08-29",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1787994000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_38",
+      "orderText": "19.4 MİC GOTS CHUBUT FLEECES TOPS LOT : 81143",
+      "supplier": "GLOBAL WOOL",
+      "kg": 4000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-08-27",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1787821200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_39",
+      "orderText": "21.1 MİC - GOTS CHUBUT FLEECES TOPS LOT : 81197",
+      "supplier": "GLOBAL WOOL",
+      "kg": 800.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-08-27",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1787821200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_36",
+      "orderText": "S 38779 NEW ZEALAND SCOURED RWS LAMBS",
+      "supplier": "NEW ZEALAND WOOL SERVİCES",
+      "kg": 10000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2026-07-15",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1784106000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_39",
+      "orderText": "ARGENTINA RWS WOOL TOPS CH175 17.4 MİC LOT : 7986",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 9600.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2026-07-14",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1784019600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_31",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL TOPS 19.5 GOTS ITU 26.140 LOT : 7124",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 13500.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-07-01",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1782896400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_32",
+      "orderText": "ARGENTİNİAN ORGANİC & RWS WOOL TOPS 20.5 GOTS & RWS ITU 26.139 LOT : 7121",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 13500.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-07-01",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1782896400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_33",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL TOPS 19.5 GOTS ITU 26.126 LOT : 7111",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 24000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-06-29",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1782723600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_27",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 15073.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2026-06-20",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1781946000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_26",
+      "orderText": "OCS PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10000.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2026-06-11",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1781168400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_38",
+      "orderText": "SA 706 NEW ZEALAND RWS OPEN TOPS 17.7 MİCRON 48 HM ( SL 1093 )",
+      "supplier": "FOX",
+      "kg": 3900.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2026-06-04",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1780563600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_15",
+      "orderText": "GRS PES",
+      "supplier": "ERTONA",
+      "kg": 250.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2026-05-15",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1778835600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_28",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL TOPS 19.5 MİC GOTS ITU 9872 LOT :7925",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 1600.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-05-05",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1777971600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_29",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL TOPS 19.5 MİC GOTS ITU 26.028 LOT :7038",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 800.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-05-05",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1777971600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_30",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL TOPS 21.5 MİC GOTS ITU 26.014 LOT :7034",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 10100.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-05-05",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1777971600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_27",
+      "orderText": "ARGENTİNA GOTS WOOLTOPS 19.5 MİC LOT ARX 1192",
+      "supplier": "CHARGUERS",
+      "kg": 7700.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-04-25",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1777107600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_37",
+      "orderText": "NEW ZEALAND SCOURED RWS LAMBSWOOL 28.9 MİC/0,1VM / YZ 4,1 TYPE: 756 2/3 LOT: 51146",
+      "supplier": "GLOBAL WOOL",
+      "kg": 6000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2026-04-04",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1775293200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_25",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 15162.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2026-03-17",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1773738000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_14",
+      "orderText": "% 100 WOL ( GRS )",
+      "supplier": "BECCANİ",
+      "kg": 17630.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2026-03-16",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1773651600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_33",
+      "orderText": "BF 0352 18.5 MİC RWS LOT: 5424",
+      "supplier": "FUHRMANN",
+      "kg": 13250.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2026-03-13",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1773392400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_34",
+      "orderText": "BF 0353 19.5 MİC RWS LOT: 5423",
+      "supplier": "FUHRMANN",
+      "kg": 13250.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2026-03-13",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1773392400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_32",
+      "orderText": "BF 0343 17.5 MİC RWS LOT: 5405",
+      "supplier": "FUHRMANN",
+      "kg": 26500.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2026-03-02",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1772442000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_13",
+      "orderText": "GRS CASHMERE",
+      "supplier": "TESMA",
+      "kg": 814.8,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2026-02-25",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1772010000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_25",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL 19,4 MİC LOT : 7784 ITU 9462",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 7400.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-02-21",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1771664400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_26",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL 19,5 MİC LOT : 7831 ITU 9547",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 14000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-02-21",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1771664400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_24",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 15319.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2026-02-11",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1770800400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_12",
+      "orderText": "% 100 WOL ( GRS )",
+      "supplier": "BECCANİ",
+      "kg": 17700.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2026-01-17",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1768640400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_24",
+      "orderText": "ARGENTİNİAN ORGANİC WOOL 19,4 MİC LOT : 7784 ITU 9462",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 10000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2026-01-10",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1768035600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_35",
+      "orderText": "NEW ZEALAND SCOURED RWS 29,3 MİC LOT:51161",
+      "supplier": "GLOBAL WOOL",
+      "kg": 10000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2026-01-10",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1768035600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_22",
+      "orderText": "BF 0223 19.5 GOTS 70 MM LOT : 5362",
+      "supplier": "FUHRMANN",
+      "kg": 12000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2025-12-26",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1766739600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_23",
+      "orderText": "BF 0225 20.5 GOTS + RWS 70 MM LOT : 5361",
+      "supplier": "FUHRMANN",
+      "kg": 12000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2025-12-26",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1766739600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_11",
+      "orderText": "RENCEYLE PA",
+      "supplier": "RADİCİ",
+      "kg": 9000.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2025-11-19",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1763542800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_23",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 9973.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2025-10-02",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1759395600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_31",
+      "orderText": "NEW ZEALAND SCOURED RWS 28.0 MİC LOT:51138",
+      "supplier": "GLOBAL WOOL",
+      "kg": 5000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2025-08-27",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1756285200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_10",
+      "orderText": "% 85 WOOL % 15 POLYAMİDE (GRS )",
+      "supplier": "GORİTEX",
+      "kg": 14500.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2025-08-04",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1754298000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_29",
+      "orderText": "BF 0140 17.5 MİC RWS LOT : 5290",
+      "supplier": "FUHRMANN",
+      "kg": 12000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2025-07-19",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1752915600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_30",
+      "orderText": "BF 0141 18.5 MİC RWS LOT : 5291",
+      "supplier": "FUHRMANN",
+      "kg": 8000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2025-07-19",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1752915600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_19",
+      "orderText": "BF 0143 19.5 MİC GOTS 70 MM LOT : 5292",
+      "supplier": "FUHRMANN",
+      "kg": 11500.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2025-07-03",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1751533200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_20",
+      "orderText": "BF 0144 20.5 MİC GOTS + RWS 70 MM LOT : 5294",
+      "supplier": "FUHRMANN",
+      "kg": 7500.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2025-07-03",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1751533200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_21",
+      "orderText": "BF 0145 20.5 MİC GOTS 70 MM LOT : 5293",
+      "supplier": "FUHRMANN",
+      "kg": 7500.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2025-07-03",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1751533200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_22",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 15008.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2025-05-13",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1747126800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_28",
+      "orderText": "SA 696 17.5 MİC RWS OPEN TOPS LOT : 203116",
+      "supplier": "FOX",
+      "kg": 10000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2025-04-29",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1745917200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_18",
+      "orderText": "18.5 MİC GOTS 72 MM LOT : 5016",
+      "supplier": "FUHRMANN",
+      "kg": 2000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2025-04-25",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1745571600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_26",
+      "orderText": "19.5 MİC RWS LOT : 5232",
+      "supplier": "FURHMANN",
+      "kg": 14000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2025-04-25",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1745571600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_27",
+      "orderText": "17.5 MİC RWS LOT: 5233",
+      "supplier": "FUHRMANN",
+      "kg": 8000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2025-04-25",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1745571600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_21",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10013.3,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2025-04-08",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1744102800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_20",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 5133.5,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2025-03-25",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1742893200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_17",
+      "orderText": "19.5 GOTS TOPS LOT 4607",
+      "supplier": "UNİLAN",
+      "kg": 5500.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2025-01-23",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1737622800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_16",
+      "orderText": "20.5 GOTS + RWS TOPS lot 5178",
+      "supplier": "FUHRMANN",
+      "kg": 14400.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2025-01-09",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1736413200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_25",
+      "orderText": "18.5 RWS TOPS LOT 7851 UW",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 12500.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2024-12-07",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1733562000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_18",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 5042.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2024-12-03",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1733216400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_19",
+      "orderText": "OCS PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 5001.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2024-12-03",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1733216400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_17",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10005.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2024-10-01",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1727773200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_15",
+      "orderText": "18.4 GOTS + RWS TOPS LOT : M3170",
+      "supplier": "SCHNEİDER",
+      "kg": 1100.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2024-09-19",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1726736400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_7",
+      "orderText": "% 85 WOOL % 15 POLYAMİDE (GRS )",
+      "supplier": "GORİTEX",
+      "kg": 18679.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2024-08-15",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1723712400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_12",
+      "orderText": "20,5 GOTS TOPS",
+      "supplier": "SANDURU ( ENGRAW )",
+      "kg": 13988.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2024-08-10",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1723280400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_8",
+      "orderText": "% 80 WOOL - 20 PA ( GRS )",
+      "supplier": "BECCANİ",
+      "kg": 14000.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2024-08-10",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1723280400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_9",
+      "orderText": "% 100 WOL ( GRS )",
+      "supplier": "BECCANİ",
+      "kg": 3300.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2024-08-10",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1723280400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_13",
+      "orderText": "19,5 GOTS TOPS LOT : 5067",
+      "supplier": "FUHRMANN",
+      "kg": 11500.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2024-07-24",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1721811600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_14",
+      "orderText": "20,8 GOTS TOPS ITU 9469 LOT : 7785",
+      "supplier": "ITUZANGO ( DE BREMHOEVE )",
+      "kg": 5097.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2024-06-29",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1719651600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_24",
+      "orderText": "19,5 RWS TOPS LOT 9681",
+      "supplier": "ITIZUANGO ( DE BREMHOEVE )",
+      "kg": 13318.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2024-06-15",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1718442000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_16",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10005.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2024-06-08",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1717837200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_15",
+      "orderText": "OCS PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 5000.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2024-03-30",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1711789200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_14",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10001.9,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2024-03-16",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1710579600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_6",
+      "orderText": "% 100 WOL ( GRS )",
+      "supplier": "BECCANİ",
+      "kg": 20281.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2024-01-08",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1704704400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_19",
+      "orderText": "SA 671 23.5 RWS OPEN TOPS",
+      "supplier": "FOX",
+      "kg": 10500.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2023-12-25",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1703494800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_4",
+      "orderText": "% 85 WOOL % 15 POLYAMİDE (GRS )",
+      "supplier": "GORİTEX",
+      "kg": 14949.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2023-10-24",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1698138000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_5",
+      "orderText": "% 98 WOOL % 2 POLYAMİDE ( GRS )",
+      "supplier": "GORİTEX",
+      "kg": 2776.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2023-10-24",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1698138000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_20",
+      "orderText": "14452 16.5 RWS TOPS",
+      "supplier": "CENTEX",
+      "kg": 1900.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2023-09-15",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1694768400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_21",
+      "orderText": "14453 17.5 RWS TOPS",
+      "supplier": "CENTEX",
+      "kg": 8000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2023-09-15",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1694768400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_22",
+      "orderText": "14454 21.0 RWS TOPS",
+      "supplier": "CENTEX",
+      "kg": 6500.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2023-09-15",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1694768400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_23",
+      "orderText": "14455 21.5 RWS TOPS",
+      "supplier": "CENTEX",
+      "kg": 1500.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2023-09-15",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1694768400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_13",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10093.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2023-09-12",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1694509200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_18",
+      "orderText": "SA 670 24.5 RWS OPEN TOPS",
+      "supplier": "FOX",
+      "kg": 10500.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2023-08-04",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1691139600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_15",
+      "orderText": "SA 664 21,5 RWS OPEN TOPS",
+      "supplier": "FOX",
+      "kg": 20000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2023-06-22",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1687424400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_12",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10077.8,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2023-05-27",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1685178000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_10",
+      "orderText": "BC 0233 19.5 GOTS TOPS ( 4888)",
+      "supplier": "FUHRMANN",
+      "kg": 10000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2023-05-20",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1684573200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_11",
+      "orderText": "BC 0234 20.5 GOTS TOPS ( 4912 )",
+      "supplier": "FUHRMANN",
+      "kg": 20000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2023-05-20",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1684573200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_2",
+      "orderText": "RENCYLE PA 3.3 50 MM GRS SEMİ DULL",
+      "supplier": "RADİCİ",
+      "kg": 6000.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2023-04-17",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1681722000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_grs_3",
+      "orderText": "RENCYLE PA 3.3 50 MM GRS BLACK ROUND",
+      "supplier": "RADİCİ",
+      "kg": 3000.0,
+      "standards": [
+        "GRS"
+      ],
+      "receivedDate": "2023-04-17",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1681722000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_16",
+      "orderText": "18.5 RWS TOPS ( 14413 )",
+      "supplier": "CENTEX",
+      "kg": 12000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2023-04-13",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1681376400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_17",
+      "orderText": "20.5 RWS TOPS (14414 )",
+      "supplier": "CENTEX",
+      "kg": 12000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2023-04-13",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1681376400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_10",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 7500.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2023-02-21",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1676970000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_11",
+      "orderText": "OCS PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 7500.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2023-02-21",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1676970000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_14",
+      "orderText": "SA 660 RWS OPEN TOPS 25 MİCRON",
+      "supplier": "FOX",
+      "kg": 10000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2023-01-27",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1674810000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_8",
+      "orderText": "BC 0167 GOTS+RWS 20.5 MİC MERİNO WOOL TOPS ( 4864 )",
+      "supplier": "FUHRMANN",
+      "kg": 12000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2022-12-31",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1672477200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_9",
+      "orderText": "BC 0168 GOTS 20.5 MİC MERİNO WOOL TOPS ( 4863 )",
+      "supplier": "FUHRMANN",
+      "kg": 12000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2022-12-31",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1672477200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_13",
+      "orderText": "SA 659 RWS OPEN TOPS 21.5 MİCRON",
+      "supplier": "FOX",
+      "kg": 10000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2022-12-10",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1670662800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_12",
+      "orderText": "SA 655 AUSTRALIAN CARBONISED RWS 23.5 MİC",
+      "supplier": "FOX",
+      "kg": 12000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2022-10-26",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1666774800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_6",
+      "orderText": "BC 0051 ORGANIC MERINO WOOL TOPS 19.5 MIC",
+      "supplier": "FUHRMANN",
+      "kg": 14000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2022-08-17",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1660726800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_6",
+      "orderText": "SA 653 AUSTRALIAN CARBONISED RWS 23.2 MİC",
+      "supplier": "FOX",
+      "kg": 12000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2022-08-12",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1660294800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_10",
+      "orderText": "BC 0049 RWS MERİNO WOOL TOPS 19.5 MIC",
+      "supplier": "FUHRMANN",
+      "kg": 12000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2022-08-03",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1659517200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_11",
+      "orderText": "BC 0050 RWS MERINO WOOL TOPS 20.5 MIC",
+      "supplier": "FUHRMANN",
+      "kg": 12000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2022-08-03",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1659517200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_9",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10017.3,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2022-07-02",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1656752400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_8",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10055.9,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2022-06-24",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1656061200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_7",
+      "orderText": "ORGANIC 21.5 MIC CHUBUT FLEECES TOPS LOT 81013-81014",
+      "supplier": "GLOBAL WOOL",
+      "kg": 14300.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2022-06-23",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1655974800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_5",
+      "orderText": "BC 0006 RWS MERINO WOOL TOPS 20.5 MIC",
+      "supplier": "FUHRMANN",
+      "kg": 14000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2022-05-27",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1653642000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_7",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10005.8,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2022-05-19",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1652950800000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_7",
+      "orderText": "MONTEVİEDEO WOOL TOPS 19.3 MIC RWS",
+      "supplier": "CENTEX",
+      "kg": 10000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2022-05-12",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1652346000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_8",
+      "orderText": "MONTEVİEDEO WOOL TOPS 21.2 MIC RWS",
+      "supplier": "CENTEX",
+      "kg": 9000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2022-05-12",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1652346000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_9",
+      "orderText": "MONTEVİEDEO WOOL TOPS 23.0 MIC RWS",
+      "supplier": "CENTEX",
+      "kg": 5000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2022-05-12",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1652346000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_6",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 10136.7,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2022-04-30",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1651309200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_5",
+      "orderText": "BB 0188 ORGANIC MERINO WOOL TOPS 20.5 MIC",
+      "supplier": "FUHRMANN",
+      "kg": 24000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2022-02-26",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1645866000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_4",
+      "orderText": "BB 0187 ORGANIC MERINO WOOL TOPS 19.5 MIC",
+      "supplier": "FUHRMANN",
+      "kg": 15000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2022-02-25",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1645779600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_4",
+      "orderText": "RWS & MULESİNG FREE WOOL TOPS 22.3 MIC",
+      "supplier": "G.SCHNEİDER",
+      "kg": 14000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2022-02-17",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1645088400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_5",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 20079.6,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2021-11-03",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1635930000000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_3",
+      "orderText": "SA 641 AUSTRALIAN CARBONISED RWS 23.0 MİC",
+      "supplier": "FOX",
+      "kg": 11000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2021-10-07",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1633597200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_2",
+      "orderText": "BB090 ORGANIC MERINO WOOL TOPS 20,5 MIC",
+      "supplier": "FUHRMANN",
+      "kg": 12000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2021-08-06",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1628240400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_rws_2",
+      "orderText": "BB091 RWS MERINO WOOL TOPS 19,5 MIC",
+      "supplier": "FUHRMANN",
+      "kg": 13000.0,
+      "standards": [
+        "RWS"
+      ],
+      "receivedDate": "2021-08-06",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1628240400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_gots_3",
+      "orderText": "ARJANTİN ORGANİK YÜN TOPS 20.4 MİC",
+      "supplier": "BREMER",
+      "kg": 10000.0,
+      "standards": [
+        "GOTS"
+      ],
+      "receivedDate": "2021-07-29",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": false,
+      "portalDate": "",
+      "createdAtEpochMs": 1627549200000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_4",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 20000.0,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2021-06-22",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1624352400000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_3",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 7502.1,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2021-03-27",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1616835600000,
+      "updatedAtEpochMs": 1
+    },
+    {
+      "id": "xl_pamuk_2",
+      "orderText": "ORGANİK PAMUK",
+      "supplier": "GÜLLE",
+      "kg": 5042.8,
+      "standards": [
+        "Pamuk"
+      ],
+      "receivedDate": "2021-02-08",
+      "tcReceived": true,
+      "tcDate": "",
+      "portalRegistered": true,
+      "portalDate": "",
+      "createdAtEpochMs": 1612774800000,
+      "updatedAtEpochMs": 1
+    }
+  ]
+}
