@@ -56,6 +56,18 @@ export const SyncService = {
     }
   },
 
+  _debounceTimer: null as ReturnType<typeof setTimeout> | null,
+
+  /** Sık yapılan küçük düzenlemeler (tarih, onay kutusu) için gecikmeli eşitleme */
+  scheduleSync(delayMs = 1500) {
+    if (typeof window === 'undefined') return;
+    if (this._debounceTimer) clearTimeout(this._debounceTimer);
+    this._debounceTimer = setTimeout(() => {
+      this._debounceTimer = null;
+      this.triggerSync();
+    }, delayMs);
+  },
+
   async triggerSync(): Promise<boolean> {
     if (typeof window === 'undefined') return false;
 
@@ -74,6 +86,8 @@ export const SyncService = {
       const yunOraniRecords = StorageService.getYunOraniRecords();
       const dryingSessions = StorageService.getDryingSessions();
       const pendingLots = StorageService.getPendingLots();
+      const certifiedShipments = StorageService.getCertifiedShipments();
+      const incomingMaterials = StorageService.getIncomingMaterials();
       const pendingLotsTime = Number(localStorage.getItem(PENDING_SYNC_TIME_KEY) || '0');
 
       const res = await fetch('/api/sync', {
@@ -83,6 +97,8 @@ export const SyncService = {
           moistureRecords,
           yunOraniRecords,
           dryingSessions,
+          certifiedShipments,
+          incomingMaterials,
           pendingLots,
           pendingLotsUpdatedAt: pendingLotsTime,
           deletedIds,
@@ -106,6 +122,8 @@ export const SyncService = {
         StorageService.setRawMoistureRecords(json.data.moistureRecords || []);
         StorageService.setRawYunOraniRecords(json.data.yunOraniRecords || []);
         StorageService.setRawDryingSessions(json.data.dryingSessions || []);
+        StorageService.setRawCertifiedShipments(json.data.certifiedShipments || []);
+        StorageService.setRawIncomingMaterials(json.data.incomingMaterials || []);
 
         if (json.data.pendingLots && json.data.pendingLots !== pendingLots) {
           StorageService.setRawPendingLots(json.data.pendingLots);

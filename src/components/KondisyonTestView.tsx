@@ -41,6 +41,9 @@ export default function KondisyonTestView({ onNotify }: KondisyonTestViewProps) 
   // Show formulas accordion
   const [showFormulas, setShowFormulas] = useState(false);
 
+  // Taslak yüklenmeden önce boş değerlerin taslağın üzerine yazılmasını engeller
+  const [draftLoaded, setDraftLoaded] = useState(false);
+
   // Load drafts on mount
   useEffect(() => {
     const draft = StorageService.getKondisyonDraft();
@@ -61,10 +64,12 @@ export default function KondisyonTestView({ onNotify }: KondisyonTestViewProps) 
       setTare(dDraft.tare || '');
       setMeasurements(dDraft.rows || []);
     }
+    setDraftLoaded(true);
   }, []);
 
   // Save drafts on change
   useEffect(() => {
+    if (!draftLoaded) return;
     StorageService.setKondisyonDraft({
       lot,
       incoming,
@@ -75,15 +80,16 @@ export default function KondisyonTestView({ onNotify }: KondisyonTestViewProps) 
       conditionKg,
       conditionPercent,
     });
-  }, [lot, incoming, grossKg, wet, dry, standardMoisture, conditionKg, conditionPercent]);
+  }, [draftLoaded, lot, incoming, grossKg, wet, dry, standardMoisture, conditionKg, conditionPercent]);
 
   useEffect(() => {
+    if (!draftLoaded) return;
     StorageService.setDryingNotesDraft({
       lot: notesLot,
       tare,
       rows: measurements,
     });
-  }, [notesLot, tare, measurements]);
+  }, [draftLoaded, notesLot, tare, measurements]);
 
   // Auto-calculate Condition Percent from Condition KG & Net KG Nemli
   const handleIncomingChange = (val: string) => {

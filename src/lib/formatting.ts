@@ -64,3 +64,14 @@ export const Formatting = {
     return `${hours}:${minutes}`;
   },
 };
+
+/** Bugünün tarihi, yerel saatle YYYY-MM-DD (date input formatı) */
+export function todayIso(): string {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+/** Lot numaralarını karşılaştırmak için normalize eder (boşluk ve büyük/küçük harf duyarsız) */
+export function normalizeLot(lot: string | null | undefined): string {
+  return (lot || '').replace(/\s+/g, '').toLocaleUpperCase('tr-TR');
+}

@@ -1,6 +1,13 @@
 'use client';
 
-import { MoistureTestRecord, YunOraniTestRecord, DryingNoteSession, DryingMeasurement } from './types';
+import {
+  MoistureTestRecord,
+  YunOraniTestRecord,
+  DryingNoteSession,
+  DryingMeasurement,
+  CertifiedShipment,
+  IncomingMaterial,
+} from './types';
 import { SyncService } from './syncService';
 
 const STORAGE_KEYS = {
@@ -8,6 +15,8 @@ const STORAGE_KEYS = {
   YUN_ORANI_RECORDS: 'yun_orani_records_v1',
   DRYING_NOTE_SESSIONS: 'yun_drying_sessions_v1',
   PENDING_LOTS: 'yun_pending_lots_v1',
+  CERTIFIED_SHIPMENTS: 'yun_certified_shipments_v1',
+  INCOMING_MATERIALS: 'yun_incoming_materials_v1',
   DRAFT_KONDISYON: 'yun_draft_kondisyon_v1',
   DRAFT_YUN_ORANI: 'yun_draft_yun_orani_v1',
   DRAFT_DRYING_NOTES: 'yun_draft_drying_notes_v1',
@@ -135,6 +144,88 @@ export const StorageService = {
     SyncService.registerDeletedId(id);
   },
 
+  // Sertifikalı Hammadde Sevkiyatları
+  getCertifiedShipments(): CertifiedShipment[] {
+    return safeGet<CertifiedShipment[]>(STORAGE_KEYS.CERTIFIED_SHIPMENTS, []);
+  },
+
+  setRawCertifiedShipments(items: CertifiedShipment[]): void {
+    safeSet(STORAGE_KEYS.CERTIFIED_SHIPMENTS, items);
+  },
+
+  addCertifiedShipment(orderText: string): CertifiedShipment {
+    const now = Date.now();
+    const item: CertifiedShipment = {
+      id: 'c_' + now + '_' + Math.random().toString(36).substring(2, 7),
+      orderText,
+      receivedDate: '',
+      tcReceived: false,
+      tcDate: '',
+      portalRegistered: false,
+      portalDate: '',
+      createdAtEpochMs: now,
+      updatedAtEpochMs: now,
+    };
+    const items = this.getCertifiedShipments();
+    items.unshift(item);
+    safeSet(STORAGE_KEYS.CERTIFIED_SHIPMENTS, items);
+    SyncService.triggerSync();
+    return item;
+  },
+
+  updateCertifiedShipment(id: string, patch: Partial<Omit<CertifiedShipment, 'id' | 'createdAtEpochMs'>>): void {
+    const items = this.getCertifiedShipments().map(i =>
+      i.id === id ? { ...i, ...patch, updatedAtEpochMs: Date.now() } : i
+    );
+    safeSet(STORAGE_KEYS.CERTIFIED_SHIPMENTS, items);
+    SyncService.scheduleSync();
+  },
+
+  deleteCertifiedShipment(id: string): void {
+    safeSet(STORAGE_KEYS.CERTIFIED_SHIPMENTS, this.getCertifiedShipments().filter(i => i.id !== id));
+    SyncService.registerDeletedId(id);
+  },
+
+  // Gelecek Hammadde Kayıtları
+  getIncomingMaterials(): IncomingMaterial[] {
+    return safeGet<IncomingMaterial[]>(STORAGE_KEYS.INCOMING_MATERIALS, []);
+  },
+
+  setRawIncomingMaterials(items: IncomingMaterial[]): void {
+    safeSet(STORAGE_KEYS.INCOMING_MATERIALS, items);
+  },
+
+  addIncomingMaterial(lotNo: string, description: string, arrivalDate: string): IncomingMaterial {
+    const now = Date.now();
+    const item: IncomingMaterial = {
+      id: 'h_' + now + '_' + Math.random().toString(36).substring(2, 7),
+      lotNo,
+      description,
+      arrivalDate,
+      conditionTested: false,
+      createdAtEpochMs: now,
+      updatedAtEpochMs: now,
+    };
+    const items = this.getIncomingMaterials();
+    items.unshift(item);
+    safeSet(STORAGE_KEYS.INCOMING_MATERIALS, items);
+    SyncService.triggerSync();
+    return item;
+  },
+
+  updateIncomingMaterial(id: string, patch: Partial<Omit<IncomingMaterial, 'id' | 'createdAtEpochMs'>>): void {
+    const items = this.getIncomingMaterials().map(i =>
+      i.id === id ? { ...i, ...patch, updatedAtEpochMs: Date.now() } : i
+    );
+    safeSet(STORAGE_KEYS.INCOMING_MATERIALS, items);
+    SyncService.scheduleSync();
+  },
+
+  deleteIncomingMaterial(id: string): void {
+    safeSet(STORAGE_KEYS.INCOMING_MATERIALS, this.getIncomingMaterials().filter(i => i.id !== id));
+    SyncService.registerDeletedId(id);
+  },
+
   // Pending Lots Note
   getPendingLots(): string {
     return safeGet<string>(STORAGE_KEYS.PENDING_LOTS, '');
@@ -184,6 +275,8 @@ export const StorageService = {
       yunOraniRecords: this.getYunOraniRecords(),
       dryingSessions: this.getDryingSessions(),
       pendingLots: this.getPendingLots(),
+      certifiedShipments: this.getCertifiedShipments(),
+      incomingMaterials: this.getIncomingMaterials(),
     };
     return JSON.stringify(backup, null, 2);
   },
@@ -199,6 +292,12 @@ export const StorageService = {
       }
       if (Array.isArray(parsed.dryingSessions)) {
         safeSet(STORAGE_KEYS.DRYING_NOTE_SESSIONS, parsed.dryingSessions);
+      }
+      if (Array.isArray(parsed.certifiedShipments)) {
+        safeSet(STORAGE_KEYS.CERTIFIED_SHIPMENTS, parsed.certifiedShipments);
+      }
+      if (Array.isArray(parsed.incomingMaterials)) {
+        safeSet(STORAGE_KEYS.INCOMING_MATERIALS, parsed.incomingMaterials);
       }
       if (typeof parsed.pendingLots === 'string') {
         safeSet(STORAGE_KEYS.PENDING_LOTS, parsed.pendingLots);

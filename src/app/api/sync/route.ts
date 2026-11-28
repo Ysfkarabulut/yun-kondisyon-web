@@ -42,6 +42,8 @@ export async function GET() {
         moistureRecords: storeMap['moisture_records'] || [],
         yunOraniRecords: storeMap['yun_orani_records'] || [],
         dryingSessions: storeMap['drying_sessions'] || [],
+        certifiedShipments: storeMap['certified_shipments'] || [],
+        incomingMaterials: storeMap['incoming_materials'] || [],
         pendingLots: storeMap['pending_lots']?.text || '',
         pendingLotsUpdatedAt: storeMap['pending_lots']?.updatedAt || 0,
       },
@@ -85,6 +87,8 @@ export async function POST(request: Request) {
       moistureRecords = [],
       yunOraniRecords = [],
       dryingSessions = [],
+      certifiedShipments = [],
+      incomingMaterials = [],
       pendingLots = '',
       pendingLotsUpdatedAt = 0,
       deletedIds = [],
@@ -140,6 +144,21 @@ export async function POST(request: Request) {
       (a, b) => b.archivedAtEpochMs - a.archivedAtEpochMs
     );
 
+    // 4b. Merge editable lists (newest updatedAtEpochMs wins per item)
+    const mergeEditable = (remote: any[], local: any[]) => {
+      const map = new Map<string, any>();
+      [...remote, ...local].forEach(item => {
+        if (!item?.id || deletedSet.has(item.id)) return;
+        const prev = map.get(item.id);
+        if (!prev || (item.updatedAtEpochMs || 0) >= (prev.updatedAtEpochMs || 0)) {
+          map.set(item.id, item);
+        }
+      });
+      return Array.from(map.values()).sort((a, b) => b.createdAtEpochMs - a.createdAtEpochMs);
+    };
+    const mergedCertified = mergeEditable(storeMap['certified_shipments'] || [], certifiedShipments);
+    const mergedIncoming = mergeEditable(storeMap['incoming_materials'] || [], incomingMaterials);
+
     // 5. Merge Pending Lots
     const remotePending = storeMap['pending_lots'] || { text: '', updatedAt: 0 };
     let mergedPendingText = remotePending.text;
@@ -162,6 +181,8 @@ export async function POST(request: Request) {
         ('moisture_records', ${JSON.stringify(mergedMoisture)}::jsonb, ${now}),
         ('yun_orani_records', ${JSON.stringify(mergedYun)}::jsonb, ${now}),
         ('drying_sessions', ${JSON.stringify(mergedDrying)}::jsonb, ${now}),
+        ('certified_shipments', ${JSON.stringify(mergedCertified)}::jsonb, ${now}),
+        ('incoming_materials', ${JSON.stringify(mergedIncoming)}::jsonb, ${now}),
         ('pending_lots', ${JSON.stringify({ text: mergedPendingText, updatedAt: mergedPendingTime })}::jsonb, ${now})
       ON CONFLICT (key) DO UPDATE SET
         value = EXCLUDED.value,
@@ -175,6 +196,8 @@ export async function POST(request: Request) {
         moistureRecords: mergedMoisture,
         yunOraniRecords: mergedYun,
         dryingSessions: mergedDrying,
+        certifiedShipments: mergedCertified,
+        incomingMaterials: mergedIncoming,
         pendingLots: mergedPendingText,
         pendingLotsUpdatedAt: mergedPendingTime,
       },

@@ -56,7 +56,8 @@ export function downloadPdfFile(doc: jsPDF, filename: string): void {
 export async function sharePdfFile(
   doc: jsPDF,
   filename: string,
-  title: string = 'Kondisyon Test Raporu'
+  title: string = 'Kondisyon Test Raporu',
+  text?: string
 ): Promise<void> {
   const blob = doc.output('blob');
   const file = new File([blob], filename, { type: 'application/pdf' });
@@ -66,6 +67,7 @@ export async function sharePdfFile(
       await navigator.share({
         files: [file],
         title: title,
+        ...(text ? { text } : {}),
       });
       return;
     } catch (e: any) {
@@ -214,7 +216,9 @@ export const PdfGenerator = {
 
   async shareMoistureReport(record: MoistureTestRecord): Promise<void> {
     const { doc, filename } = this.buildMoistureDoc(record);
-    await sharePdfFile(doc, filename, 'Kondisyon Test Raporu');
+    const lot = record.lotNo?.trim() || '—';
+    const body = `Merhaba,\n\n${lot} lot numaralı hammadde kondisyon testi ektedir.\n\nİyi Çalışmalar.`;
+    await sharePdfFile(doc, filename, 'Kondisyon Test Raporu', body);
   },
 
   // Backward compatibility alias

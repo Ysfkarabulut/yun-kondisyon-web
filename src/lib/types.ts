@@ -38,3 +38,27 @@ export interface DryingNoteSession {
   measurements: DryingMeasurement[];
   archivedAtEpochMs: number;
 }
+
+/** Sertifikalı hammadde sevkiyat takibi (sipariş → teslim → TC belgesi → portal kaydı) */
+export interface CertifiedShipment {
+  id: string;
+  orderText: string; // Sipariş / sevkiyat açıklaması
+  receivedDate: string; // YYYY-MM-DD, boş = henüz gelmedi
+  tcReceived: boolean;
+  tcDate: string; // YYYY-MM-DD
+  portalRegistered: boolean;
+  portalDate: string; // YYYY-MM-DD
+  createdAtEpochMs: number;
+  updatedAtEpochMs: number;
+}
+
+/** Gelecek / gelen hammadde kaydı ve kondisyon testi takibi */
+export interface IncomingMaterial {
+  id: string;
+  lotNo: string;
+  description: string;
+  arrivalDate: string; // YYYY-MM-DD
+  conditionTested: boolean;
+  createdAtEpochMs: number;
+  updatedAtEpochMs: number;
+}

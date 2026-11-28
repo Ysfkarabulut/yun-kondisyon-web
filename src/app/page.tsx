@@ -5,6 +5,9 @@ import KondisyonTestView from '@/components/KondisyonTestView';
 import YunOraniTestView from '@/components/YunOraniTestView';
 import HistoryView from '@/components/HistoryView';
 import NotesAndSettingsView from '@/components/NotesAndSettingsView';
+import CertifiedMaterialView from '@/components/CertifiedMaterialView';
+import IncomingMaterialView from '@/components/IncomingMaterialView';
+import { StorageService } from '@/lib/storage';
 import StopwatchModal from '@/components/StopwatchModal';
 import SyncBadge from '@/components/SyncBadge';
 import {
@@ -13,12 +16,24 @@ import {
   History,
   FileEdit,
   Clock,
-  Sparkles,
   CheckCircle2,
+  BadgeCheck,
+  PackageOpen,
 } from 'lucide-react';
 
+type TabKey = 'kondisyon' | 'yunOrani' | 'hammadde' | 'sertifikali' | 'history' | 'notes';
+
+const TABS: { key: TabKey; label: string; Icon: React.ComponentType<{ className?: string }>; active: string }[] = [
+  { key: 'kondisyon', label: 'Kondisyon', Icon: Scale, active: 'text-indigo-600 dark:text-indigo-400 [&>div]:bg-indigo-50 dark:[&>div]:bg-indigo-950/60' },
+  { key: 'yunOrani', label: 'Yün Oranı', Icon: Percent, active: 'text-teal-600 dark:text-teal-400 [&>div]:bg-teal-50 dark:[&>div]:bg-teal-950/60' },
+  { key: 'hammadde', label: 'Hammadde', Icon: PackageOpen, active: 'text-sky-600 dark:text-sky-400 [&>div]:bg-sky-50 dark:[&>div]:bg-sky-950/60' },
+  { key: 'sertifikali', label: 'Sertifikalı', Icon: BadgeCheck, active: 'text-emerald-600 dark:text-emerald-400 [&>div]:bg-emerald-50 dark:[&>div]:bg-emerald-950/60' },
+  { key: 'history', label: 'Geçmiş', Icon: History, active: 'text-indigo-600 dark:text-indigo-400 [&>div]:bg-indigo-50 dark:[&>div]:bg-indigo-950/60' },
+  { key: 'notes', label: 'Notlar', Icon: FileEdit, active: 'text-amber-600 dark:text-amber-400 [&>div]:bg-amber-50 dark:[&>div]:bg-amber-950/60' },
+];
+
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<'kondisyon' | 'yunOrani' | 'history' | 'notes'>('kondisyon');
+  const [activeTab, setActiveTab] = useState<TabKey>('kondisyon');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isStopwatchOpen, setIsStopwatchOpen] = useState(false);
 
@@ -27,6 +42,14 @@ export default function Home() {
     setTimeout(() => {
       setToastMessage(null);
     }, 3200);
+  };
+
+  // Hammadde kaydından kondisyon testine geçiş: lot numarasını taslağa yazar
+  const startConditionTest = (lotNo: string) => {
+    const draft = StorageService.getKondisyonDraft() || {};
+    StorageService.setKondisyonDraft({ ...draft, lot: lotNo });
+    setActiveTab('kondisyon');
+    window.scrollTo({ top: 0 });
   };
 
   return (
@@ -65,6 +88,10 @@ export default function Home() {
       <div className="flex-1 p-4">
         {activeTab === 'kondisyon' && <KondisyonTestView onNotify={showNotification} />}
         {activeTab === 'yunOrani' && <YunOraniTestView onNotify={showNotification} />}
+        {activeTab === 'hammadde' && (
+          <IncomingMaterialView onNotify={showNotification} onStartTest={startConditionTest} />
+        )}
+        {activeTab === 'sertifikali' && <CertifiedMaterialView onNotify={showNotification} />}
         {activeTab === 'history' && <HistoryView onNotify={showNotification} />}
         {activeTab === 'notes' && <NotesAndSettingsView onNotify={showNotification} />}
       </div>
@@ -84,66 +111,23 @@ export default function Home() {
 
       {/* Fixed Bottom Navigation Bar (Thumb ergonomic for mobile) */}
       <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-[env(safe-area-inset-bottom)]">
-        <div className="max-w-xl mx-auto flex items-center justify-around px-2 py-2">
-          {/* Tab 1: Kondisyon */}
-          <button
-            onClick={() => setActiveTab('kondisyon')}
-            className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition active:scale-90 ${
-              activeTab === 'kondisyon'
-                ? 'text-indigo-600 dark:text-indigo-400 font-bold'
-                : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 font-medium'
-            }`}
-          >
-            <div className={`p-1 rounded-xl transition ${activeTab === 'kondisyon' ? 'bg-indigo-50 dark:bg-indigo-950/60' : ''}`}>
-              <Scale className="w-5 h-5" />
-            </div>
-            <span className="text-[10px]">Kondisyon</span>
-          </button>
-
-          {/* Tab 2: Yün Oranı */}
-          <button
-            onClick={() => setActiveTab('yunOrani')}
-            className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition active:scale-90 ${
-              activeTab === 'yunOrani'
-                ? 'text-teal-600 dark:text-teal-400 font-bold'
-                : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 font-medium'
-            }`}
-          >
-            <div className={`p-1 rounded-xl transition ${activeTab === 'yunOrani' ? 'bg-teal-50 dark:bg-teal-950/60' : ''}`}>
-              <Percent className="w-5 h-5" />
-            </div>
-            <span className="text-[10px]">Yün Oranı</span>
-          </button>
-
-          {/* Tab 3: Geçmiş */}
-          <button
-            onClick={() => setActiveTab('history')}
-            className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition active:scale-90 ${
-              activeTab === 'history'
-                ? 'text-indigo-600 dark:text-indigo-400 font-bold'
-                : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 font-medium'
-            }`}
-          >
-            <div className={`p-1 rounded-xl transition ${activeTab === 'history' ? 'bg-indigo-50 dark:bg-indigo-950/60' : ''}`}>
-              <History className="w-5 h-5" />
-            </div>
-            <span className="text-[10px]">Geçmiş</span>
-          </button>
-
-          {/* Tab 4: Notlar & Ayarlar */}
-          <button
-            onClick={() => setActiveTab('notes')}
-            className={`flex flex-col items-center gap-1 py-1 px-3 rounded-2xl transition active:scale-90 ${
-              activeTab === 'notes'
-                ? 'text-amber-600 dark:text-amber-400 font-bold'
-                : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 font-medium'
-            }`}
-          >
-            <div className={`p-1 rounded-xl transition ${activeTab === 'notes' ? 'bg-amber-50 dark:bg-amber-950/60' : ''}`}>
-              <FileEdit className="w-5 h-5" />
-            </div>
-            <span className="text-[10px]">Notlar</span>
-          </button>
+        <div className="max-w-xl mx-auto flex items-center justify-around px-1 py-2">
+          {TABS.map(({ key, label, Icon, active }) => (
+            <button
+              key={key}
+              onClick={() => setActiveTab(key)}
+              className={`flex-1 min-w-0 flex flex-col items-center gap-1 py-1 px-0.5 rounded-2xl transition active:scale-90 ${
+                activeTab === key
+                  ? `${active} font-bold`
+                  : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 font-medium'
+              }`}
+            >
+              <div className="p-1 rounded-xl transition">
+                <Icon className="w-5 h-5" />
+              </div>
+              <span className="text-[10px] truncate max-w-full">{label}</span>
+            </button>
+          ))}
         </div>
       </nav>
     </main>
